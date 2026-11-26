@@ -198,6 +198,25 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		favoritesManager.addListener(this);
 		
 		switchTab(TAB_HOME);
+		showCrashReport();
+	}
+	
+	private void showCrashReport() {
+		String report = CrashRecorder.pendingReport();
+		if (report == null) return;
+		new AlertDialog.Builder(this)
+		.setTitle("Hata raporu (varsayılan liste açıldı)")
+		.setMessage(report)
+		.setCancelable(false)
+		.setPositiveButton("Kopyala", (dialog, which) -> {
+			android.content.ClipboardManager clipboard =
+			(android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+			clipboard.setPrimaryClip(android.content.ClipData.newPlainText("Hata raporu", report));
+			CrashRecorder.clear();
+			Toast.makeText(this, "Rapor kopyalandı", Toast.LENGTH_SHORT).show();
+		})
+		.setNegativeButton("Kapat", (dialog, which) -> CrashRecorder.clear())
+		.show();
 	}
 	
 	private void initViews() {

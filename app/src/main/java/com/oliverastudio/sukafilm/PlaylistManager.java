@@ -48,6 +48,10 @@ public class PlaylistManager {
         preferences = context.getSharedPreferences("playlist", Context.MODE_PRIVATE);
     }
 
+    static void useDefaultUrl() {
+        preferences.edit().remove(KEY_URL).apply();
+    }
+
     /** The user's link, or the built-in default. */
     public String getPlaylistUrl() {
         return preferences.getString(KEY_URL, BuildConfig.PLAYLIST_URL);

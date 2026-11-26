@@ -5,3 +5,7 @@ https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_
 https://test-videos.co.uk/vids/sintel/mp4/h264/720/Sintel_720_10s_2MB.mp4
 #EXTINF:-1 group-title="Dokumenter" tvg-logo="",Flower (Test)
 https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4
+#EXTINF:-1 group-title="Canlı Test" tvg-logo="",HLS Test 1 (Mux)
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+#EXTINF:-1 group-title="Canlı Test" tvg-logo="",HLS Test 2 (Apple)
+https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8

@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0E14"
+    android:fitsSystemWindows="true">
+    <ScrollView
+        android:id="@+id/vscroll2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/linear67"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
+            <FrameLayout
+                android:id="@+id/frame_layout68"
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <ImageView
+                    android:id="@+id/img_detail_backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="BackdropFilm" />
+                <View
+                    android:id="@+id/view69"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_banner_scrim" />
+                <LinearLayout
+                    android:id="@+id/btn_play_trailer_hero"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_btn_gold"
+                    android:alpha="0.7">
+                    <ImageView
+                        android:id="@+id/imageview28"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_play"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="PlayTrailer"
+                        android:tint="#000000" />
+                </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/layout_video_player_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#FF000000"
+                    android:visibility="gone">
+                    <VideoView
+                        android:id="@+id/videoview_trailer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                    <ProgressBar
+                        android:id="@+id/prog_video_buffering"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_gravity="center"
+                        android:max="100"
+                        android:progress="0"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#F5C518" />
+                    <TextView
+                        android:id="@+id/btn_close_videoview"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:gravity="center"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/bg_badge_dark"
+                        android:text="✕"
+                        android:textSize="18sp"
+                        android:textColor="#FFFFFFFF"
+                        android:layout_gravity="bottom|end"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/btn_custom_play_pause"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:background="@drawable/bg_btn_gold"
+                        android:text="Ⅱ"
+                        android:textSize="24sp"
+                        android:textColor="#FF0B0E14"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:id="@+id/layout_custom_video_controls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical"
+                        android:paddingLeft="12dp"
+                        android:paddingTop="24dp"
+                        android:paddingRight="12dp"
+                        android:paddingBottom="10dp"
+                        android:background="#CC0B0E14">
+                        <SeekBar
+                            android:id="@+id/seek_video_progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="28dp"
+                            android:max="1000"
+                            android:progress="0"
+                            android:progressTint="#F5C518"
+                            android:progressBackgroundTint="#667080"
+                            android:thumbTint="#F5C518" />
+                        <LinearLayout
+                            android:id="@+id/linear3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/txt_video_current_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"
+                                android:textSize="11sp"
+                                android:textColor="#FFFFFFFF" />
+                            <View
+                                android:id="@+id/view4"
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+                            <TextView
+                                android:id="@+id/txt_video_duration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"
+                                android:textSize="11sp"
+                                android:textColor="#FF94A3B8" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </FrameLayout>
+            <LinearLayout
+                android:id="@+id/linear70"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_marginTop="-40dp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardview3"
+                    android:layout_width="105dp"
+                    android:layout_height="150dp"
+                    app:cardBackgroundColor="#FF161B26"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="8dp">
+                    <ImageView
+                        android:id="@+id/img_detail_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Poster" />
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:id="@+id/linear71"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="42dp">
+                    <TextView
+                        android:id="@+id/txt_detail_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Judul Film"
+                        android:textSize="18sp"
+                        android:textColor="#FFFFFFFF"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txt_detail_original_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Original Title (2024)"
+                        android:textSize="12sp"
+                        android:textColor="#FF94A3B8" />
+                    <LinearLayout
+                        android:id="@+id/linear72"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <LinearLayout
+                            android:id="@+id/linear73"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:layout_marginRight="8dp"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/bg_badge_gold">
+                            <ImageView
+                                android:id="@+id/imageview29"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/ic_star"
+                                android:scaleType="fitCenter"
+                                android:contentDescription="Star"
+                                android:tint="#000000" />
+                            <TextView
+                                android:id="@+id/txt_detail_rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:text="8.7"
+                                android:textSize="11sp"
+                                android:textColor="#FF0B0E14"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/txt_detail_quality_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/bg_badge_dark"
+                            android:text="4K WEB-DL"
+                            android:textSize="10sp"
+                            android:textColor="#FFF5C518"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_detail_genre_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/bg_badge_dark"
+                            android:text="Sci-Fi"
+                            android:textSize="10sp"
+                            android:textColor="#FF94A3B8" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/txt_detail_duration_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="2j 46m - Rilis: 2024"
+                        android:textSize="12sp"
+                        android:textColor="#FF94A3B8" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear74"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <LinearLayout
+                    android:id="@+id/btn_action_stream"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/bg_btn_gold">
+                    <ImageView
+                        android:id="@+id/imageview30"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_play"
+                        android:scaleType="center"
+                        android:contentDescription="Play"
+                        android:tint="#000000" />
+                    <TextView
+                        android:id="@+id/textview60"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="Nonton Online"
+                        android:textSize="13sp"
+                        android:textColor="#FF0B0E14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/btn_action_download"
+                    android:layout_width="0dp"
+                    android:layout_height="46dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/bg_btn_green">
+                    <ImageView
+                        android:id="@+id/imageview31"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_download"
+                        android:scaleType="center"
+                        android:contentDescription="Download" />
+                    <TextView
+                        android:id="@+id/textview61"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="6dp"
+                        android:text="Download Film"
+                        android:textSize="13sp"
+                        android:textColor="#FFFFFFFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/btn_detail_bookmark"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/bg_badge_dark">
+                    <ImageView
+                        android:id="@+id/img_detail_bookmark"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_nav_favorite"
+                        android:scaleType="center"
+                        android:contentDescription="SimpankeFavorit" />
+                </FrameLayout>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#FF161B26"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:id="@+id/linear75"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="14dp"
+                    android:paddingRight="14dp"
+                    android:paddingBottom="14dp">
+                    <LinearLayout
+                        android:id="@+id/linear76"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/imageview32"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_download"
+                            android:scaleType="center"
+                            android:contentDescription="DownloadInfo" />
+                        <TextView
+                            android:id="@+id/textview62"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:text="Server Download Suka Film Aktif"
+                            android:textSize="13sp"
+                            android:textColor="#FFF5C518"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/txt_download_sizes_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Tersedia: 1080p (2.4 GB) | 720p (1.1 GB) | 480p (520 MB)\\nFormat: MP4 H.264 • Audio AC3 Stereo • Subtitle Indonesia Hardsub"
+                        android:textSize="11sp"
+                        android:textColor="#FF94A3B8"
+                        android:lineSpacingExtra="3dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:id="@+id/layout_seasons_episodes_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <LinearLayout
+                    android:id="@+id/linear77"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:id="@+id/textview63"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pilihan Episode &amp; Season"
+                        android:textSize="15sp"
+                        android:textColor="#FFFFFFFF"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txt_episodes_count_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="6dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="6dp"
+                        android:paddingBottom="2dp"
+                        android:background="@drawable/bg_badge_gold"
+                        android:text="1 Episode"
+                        android:textSize="10sp"
+                        android:textColor="#FF0B0E14"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <HorizontalScrollView
+                    android:id="@+id/scroll_season_tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:id="@+id/layout_season_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_episodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear78"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <TextView
+                    android:id="@+id/textview64"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sinopsis Lengkap"
+                    android:textSize="15sp"
+                    android:textColor="#FFFFFFFF"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/txt_detail_synopsis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Deskripsi sinopsis film..."
+                    android:textSize="13sp"
+                    android:textColor="#FFCBD5E1"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear79"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+                <TextView
+                    android:id="@+id/textview65"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informasi Film"
+                    android:textSize="15sp"
+                    android:textColor="#FFFFFFFF"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/linear80"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:id="@+id/textview66"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Sutradara:"
+                        android:textSize="12sp"
+                        android:textColor="#FF94A3B8" />
+                    <TextView
+                        android:id="@+id/txt_detail_director"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Denis Villeneuve"
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFFFF" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear81"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp">
+                    <TextView
+                        android:id="@+id/textview67"
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:text="Pemeran:"
+                        android:textSize="12sp"
+                        android:textColor="#FF94A3B8" />
+                    <TextView
+                        android:id="@+id/txt_detail_cast"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Timothee Chalamet, Zendaya..."
+                        android:textSize="12sp"
+                        android:textColor="#FFFFFFFF" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear82"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp">
+                <TextView
+                    android:id="@+id/textview68"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Rekomendasi Serupa"
+                    android:textSize="15sp"
+                    android:textColor="#FFFFFFFF"
+                    android:textStyle="bold" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_detail_similar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="4dp"
+                    android:clipToPadding="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/linear83"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+        <FrameLayout
+            android:id="@+id/btn_detail_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_badge_dark">
+            <ImageView
+                android:id="@+id/imageview33"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back"
+                android:scaleType="center"
+                android:contentDescription="Kembali" />
+        </FrameLayout>
+        <View
+            android:id="@+id/view84"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+        <FrameLayout
+            android:id="@+id/btn_detail_downloads_shortcut"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_badge_dark">
+            <ImageView
+                android:id="@+id/imageview34"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_folder"
+                android:scaleType="center"
+                android:contentDescription="Unduhan" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

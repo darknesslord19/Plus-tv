@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0B0E14"
+    android:fitsSystemWindows="true">
+    <LinearLayout
+        android:id="@+id/linear98"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="#FF0B0E14">
+        <FrameLayout
+            android:id="@+id/btn_skip_ad_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_badge_dark">
+            <ImageView
+                android:id="@+id/imageview43"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back"
+                android:scaleType="center"
+                android:contentDescription="Kembali" />
+        </FrameLayout>
+        <TextView
+            android:id="@+id/txt_app_bar_stage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:text="Server Download Suka Film"
+            android:textSize="16sp"
+            android:textColor="#FFFFFFFF"
+            android:textStyle="bold" />
+        <FrameLayout
+            android:id="@+id/btn_skip_ad_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_badge_dark">
+            <ImageView
+                android:id="@+id/imageview44"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_close"
+                android:scaleType="center"
+                android:contentDescription="Batal" />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear99"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="#FF0B0E14">
+        <TextView
+            android:id="@+id/step_indicator_1"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/bg_badge_gold"
+            android:text="1"
+            android:textSize="13sp"
+            android:textColor="#FF0B0E14"
+            android:textStyle="bold" />
+        <View
+            android:id="@+id/step_line_1"
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:background="#FF2A3245" />
+        <TextView
+            android:id="@+id/step_indicator_2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/bg_badge_dark"
+            android:text="2"
+            android:textSize="13sp"
+            android:textColor="#FF94A3B8"
+            android:textStyle="bold" />
+        <View
+            android:id="@+id/step_line_2"
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:background="#FF2A3245" />
+        <TextView
+            android:id="@+id/step_indicator_3"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/bg_badge_dark"
+            android:text="3"
+            android:textSize="13sp"
+            android:textColor="#FF94A3B8"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <ScrollView
+        android:id="@+id/vscroll4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/linear100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                app:cardBackgroundColor="#FF161B26"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:id="@+id/linear101"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp">
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardview11"
+                        android:layout_width="45dp"
+                        android:layout_height="60dp"
+                        app:cardBackgroundColor="#FF0B0E14"
+                        app:cardCornerRadius="6dp">
+                        <ImageView
+                            android:id="@+id/img_target_movie_poster"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:contentDescription="Poster" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:id="@+id/linear102"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp">
+                        <TextView
+                            android:id="@+id/txt_target_movie_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Judul Film"
+                            android:textSize="14sp"
+                            android:textColor="#FFFFFFFF"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                        <TextView
+                            android:id="@+id/txt_target_movie_quality_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Resolusi: 1080p Full HD - 2.4 GB"
+                            android:textSize="11sp"
+                            android:textColor="#FFF5C518" />
+                        <TextView
+                            android:id="@+id/textview77"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Tersimpan di: /Suka Film/"
+                            android:textSize="10sp"
+                            android:textColor="#FF94A3B8" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#FF161B26"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:id="@+id/linear103"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="14dp"
+                    android:paddingRight="14dp"
+                    android:paddingBottom="14dp">
+                    <TextView
+                        android:id="@+id/txt_stage_heading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tahap 1 dari 3: Verifikasi Server Unduhan"
+                        android:textSize="15sp"
+                        android:textColor="#FFFFFFFF"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/txt_stage_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Menghubungkan ke server CDN utama untuk mengamankan link download berkecepatan tinggi..."
+                        android:textSize="12sp"
+                        android:textColor="#FF94A3B8"
+                        android:lineSpacingExtra="2dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="#FF161B26"
+                app:cardCornerRadius="12dp">
+                <LinearLayout
+                    android:id="@+id/linear104"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:id="@+id/img_ad_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="145dp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Iklan Sponsor" />
+                    <LinearLayout
+                        android:id="@+id/linear105"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="14dp"
+                        android:paddingRight="14dp"
+                        android:paddingBottom="14dp">
+                        <TextView
+                            android:id="@+id/textview78"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/bg_badge_gold"
+                            android:text="SPONSOR RESMI SUKA FILM"
+                            android:textSize="9sp"
+                            android:textColor="#FF0B0E14"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_ad_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Paket Hiburan Streaming 4K Ultra Cepat"
+                            android:textSize="14sp"
+                            android:textColor="#FFFFFFFF"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/txt_ad_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Nikmati jutaan konten film dan serial terbaik dengan koneksi tanpa batas dan bandwidth prioritas."
+                            android:textSize="12sp"
+                            android:textColor="#FF94A3B8" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="#FF161B26"
+                app:cardCornerRadius="10dp">
+                <LinearLayout
+                    android:id="@+id/linear106"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
+                    <TextView
+                        android:id="@+id/txt_countdown_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tunggu 10 detik untuk melanjutkan..."
+                        android:textSize="14sp"
+                        android:textColor="#FFF5C518"
+                        android:textStyle="bold" />
+                    <ProgressBar
+                        android:id="@+id/prog_timer_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="10dp"
+                        android:max="10"
+                        android:progress="0"
+                        style="?android:progressBarStyleHorizontal"
+                        android:progressTint="#F5C518"
+                        android:progressBackgroundTint="#2A3245" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <Button
+                android:id="@+id/btn_action_skip"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn_dark"
+                android:text="Menunggu Iklan (10 Detik)"
+                android:textSize="14sp"
+                android:textColor="#FF94A3B8"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:enabled="false" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_movie_poster"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:cardBackgroundColor="#FF161B26"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp">
+        <FrameLayout
+            android:id="@+id/frame_layout169"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_movie_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Poster Film" />
+            <TextView
+                android:id="@+id/txt_movie_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/bg_badge_gold"
+                android:text="4K"
+                android:textSize="9sp"
+                android:textColor="#FF0B0E14"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/linear170"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="6dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/bg_badge_dark">
+                <ImageView
+                    android:id="@+id/imageview62"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/ic_star"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Rating" />
+                <TextView
+                    android:id="@+id/txt_movie_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="8.7"
+                    android:textSize="10sp"
+                    android:textColor="#FFFFFFFF"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/txt_movie_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Judul Film"
+        android:textSize="13sp"
+        android:textColor="#FFFFFFFF"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:ellipsize="end" />
+    <TextView
+        android:id="@+id/txt_movie_genre_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Sci-Fi • 2024"
+        android:textSize="11sp"
+        android:textColor="#FF94A3B8"
+        android:maxLines="1"
+        android:ellipsize="end" />
+</LinearLayout>

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_dark"
+    android:padding="20dp">
+    <LinearLayout
+        android:id="@+id/linear119"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageview50"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_filter"
+            android:scaleType="center"
+            android:focusable="false"
+            android:contentDescription="FilterTahun" />
+        <TextView
+            android:id="@+id/textview88"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:text="Pilih Tahun Rilis (Slide)"
+            android:textSize="16sp"
+            android:textColor="#FFFFFFFF"
+            android:textStyle="bold"
+            android:focusable="false" />
+        <ImageView
+            android:id="@+id/btn_close_year_dialog"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_close"
+            android:scaleType="center"
+            android:focusable="false"
+            android:contentDescription="Tutup" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textview89"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Geser slider di bawah untuk memilih tahun film secara presisi atau pilih semua tahun."
+        android:textSize="12sp"
+        android:textColor="#FF94A3B8"
+        android:focusable="false" />
+    <LinearLayout
+        android:id="@+id/linear120"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="18dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="16dp"
+        android:background="@drawable/bg_chip_unselected">
+        <TextView
+            android:id="@+id/txt_dialog_year_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tahun Terpilih:"
+            android:textSize="11sp"
+            android:textColor="#FF94A3B8"
+            android:focusable="false" />
+        <TextView
+            android:id="@+id/txt_dialog_year_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Semua Tahun"
+            android:textSize="26sp"
+            android:textColor="#FFFACC15"
+            android:textStyle="bold"
+            android:focusable="false" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear121"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+        <SeekBar
+            android:id="@+id/seekbar_year"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="36"
+            android:progress="34"
+            android:focusable="false"
+            android:progressTint="#EAB308"
+            android:thumbTint="#FACC15" />
+        <LinearLayout
+            android:id="@+id/linear122"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/textview90"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="1990"
+                android:textSize="11sp"
+                android:textColor="#FF64748B"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/textview91"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2026"
+                android:textSize="11sp"
+                android:textColor="#FF64748B"
+                android:focusable="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textview92"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="Pilihan Cepat:"
+        android:textSize="11sp"
+        android:textColor="#FF94A3B8"
+        android:focusable="false" />
+    <HorizontalScrollView
+        android:id="@+id/hscroll6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/linear123"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/btn_chip_year_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_selected"
+                android:text="Semua Tahun"
+                android:textSize="11sp"
+                android:textColor="#FF0B0E14"
+                android:textStyle="bold"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/btn_chip_year_2026"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:text="2026"
+                android:textSize="11sp"
+                android:textColor="#FF94A3B8"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/btn_chip_year_2025"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:text="2025"
+                android:textSize="11sp"
+                android:textColor="#FF94A3B8"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/btn_chip_year_2024"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:text="2024"
+                android:textSize="11sp"
+                android:textColor="#FF94A3B8"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/btn_chip_year_2023"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:text="2023"
+                android:textSize="11sp"
+                android:textColor="#FF94A3B8"
+                android:focusable="false" />
+            <TextView
+                android:id="@+id/btn_chip_year_2022"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="12dp"
+                android:paddingTop="6dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_chip_unselected"
+                android:text="2022"
+                android:textSize="11sp"
+                android:textColor="#FF94A3B8"
+                android:focusable="false" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <LinearLayout
+        android:id="@+id/linear124"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/btn_dialog_year_reset"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_btn_dark"
+            android:text="Semua Tahun"
+            android:textSize="12sp"
+            android:textColor="#FFCBD5E1"
+            android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btn_dialog_year_apply"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/bg_btn_gold"
+            android:text="Terapkan Filter"
+            android:textSize="12sp"
+            android:textColor="#FF0B0E14"
+            android:textStyle="bold"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="8dp">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_episode_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FF161B26"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+        <LinearLayout
+            android:id="@+id/linear160"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview20"
+                android:layout_width="100dp"
+                android:layout_height="62dp"
+                app:cardBackgroundColor="#FF0B0E14"
+                app:cardCornerRadius="6dp">
+                <FrameLayout
+                    android:id="@+id/frame_layout161"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/img_episode_thumb"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Episode Thumbnail" />
+                    <TextView
+                        android:id="@+id/txt_episode_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="1dp"
+                        android:paddingRight="4dp"
+                        android:paddingBottom="1dp"
+                        android:background="@drawable/bg_badge_dark"
+                        android:text="45m"
+                        android:textSize="9sp"
+                        android:textColor="#FFFFFFFF" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:id="@+id/linear162"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="8dp">
+                <TextView
+                    android:id="@+id/txt_episode_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Episode 1"
+                    android:textSize="13sp"
+                    android:textColor="#FFFFFFFF"
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+                <TextView
+                    android:id="@+id/txt_episode_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="1080p • 1.2 GB"
+                    android:textSize="11sp"
+                    android:textColor="#FFF5C518" />
+                <TextView
+                    android:id="@+id/textview110"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Server CDN Cepat"
+                    android:textSize="10sp"
+                    android:textColor="#FF94A3B8" />
+            </LinearLayout>
+            <FrameLayout
+                android:id="@+id/btn_episode_download"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/bg_btn_green">
+                <ImageView
+                    android:id="@+id/imageview58"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_download"
+                    android:scaleType="center"
+                    android:contentDescription="Download Episode" />
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

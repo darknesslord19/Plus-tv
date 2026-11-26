@@ -58,6 +58,7 @@
                     android:visibility="gone">
                     <com.oliverastudio.sukafilm.ExoVideoView
                         android:id="@+id/videoview_trailer"
+                    app:surface_type="texture_view"
                     android:layout_gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />

@@ -3,6 +3,9 @@ package com.oliverastudio.sukafilm;
 import android.content.Context;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.media3.common.AudioAttributes;
@@ -10,6 +13,7 @@ import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
+import androidx.media3.common.VideoSize;
 import androidx.media3.datasource.HttpDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
@@ -22,6 +26,9 @@ public class ExoVideoView extends PlayerView {
     public interface OnErrorListener { void onError(String errorName); }
 
     private ExoPlayer player;
+    // On-screen playback state, so a black screen can be diagnosed from a screenshot.
+    private final TextView status;
+    private boolean frameDrawn;
     private OnPreparedListener preparedListener;
     private OnBufferingListener bufferingListener;
     private OnCompletionListener completionListener;
@@ -30,6 +37,17 @@ public class ExoVideoView extends PlayerView {
     public ExoVideoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setUseController(false);
+        status = new TextView(context);
+        status.setTextColor(0xFFFFFFFF);
+        status.setBackgroundColor(0xAA000000);
+        status.setTextSize(12f);
+        status.setPadding(16, 8, 16, 8);
+        FrameLayout overlay = getOverlayFrameLayout();
+        if (overlay != null) {
+            overlay.addView(status, new FrameLayout.LayoutParams(
+                    FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT,
+                    Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM));
+        }
     }
 
     public void setOnPreparedListener(OnPreparedListener listener) { preparedListener = listener; }
@@ -40,6 +58,9 @@ public class ExoVideoView extends PlayerView {
     /** Opens the address and starts playing. HLS is recognised by the .m3u8 extension. */
     public void setVideoURI(Uri uri) {
         stopPlayback();
+        frameDrawn = false;
+        status.setVisibility(VISIBLE);
+        status.setText("Durum: bağlanıyor");
         player = new ExoPlayer.Builder(getContext()).build();
         player.setAudioAttributes(new AudioAttributes.Builder()
                 .setUsage(C.USAGE_MEDIA)
@@ -50,7 +71,19 @@ public class ExoVideoView extends PlayerView {
             private boolean prepared;
 
             @Override
+            public void onRenderedFirstFrame() {
+                frameDrawn = true;
+                showState();
+            }
+
+            @Override
+            public void onVideoSizeChanged(@NonNull VideoSize size) {
+                showState();
+            }
+
+            @Override
             public void onPlaybackStateChanged(int state) {
+                showState();
                 if (bufferingListener != null) bufferingListener.onBuffering(state == Player.STATE_BUFFERING);
                 if (state == Player.STATE_READY && !prepared) {
                     prepared = true;
@@ -63,6 +96,8 @@ public class ExoVideoView extends PlayerView {
             @Override
             public void onPlayerError(@NonNull PlaybackException error) {
                 String details = error.getErrorCodeName();
+                status.setVisibility(VISIBLE);
+                status.setText("Durum: hata " + details);
                 Throwable cause = error.getCause();
                 if (cause instanceof HttpDataSource.InvalidResponseCodeException) {
                     details += " (HTTP " + ((HttpDataSource.InvalidResponseCodeException) cause).responseCode + ")";
@@ -75,6 +110,18 @@ public class ExoVideoView extends PlayerView {
         player.setMediaItem(MediaItem.fromUri(uri));
         player.setPlayWhenReady(true);
         player.prepare();
+    }
+
+    private void showState() {
+        if (player == null) return;
+        int state = player.getPlaybackState();
+        String name = state == Player.STATE_BUFFERING ? "yükleniyor"
+                : state == Player.STATE_READY ? "hazır"
+                : state == Player.STATE_ENDED ? "bitti" : "bekliyor";
+        VideoSize size = player.getVideoSize();
+        status.setText("Durum: " + name + " | video " + size.width + "x" + size.height
+                + " | kare " + (frameDrawn ? "çizildi" : "yok")
+                + " | alan " + getWidth() + "x" + getHeight());
     }
 
     public void start() {

@@ -80,15 +80,15 @@ public class SkipAdActivity extends AppCompatActivity {
     };
 
     private final String[] adTitles = {
-        "Punya Ide Aplikasi? Kami Siap Mewujudkannya!",
-        "Bangun Game Impian Bersama Olivera Studio",
-        "Website Modern untuk Bisnis yang Lebih Profesional"
+        "Uygulama fikriniz mi var?",
+        "Olivera Studio ile oyun geliştirin",
+        "İşletmeniz için modern web sitesi"
     };
         
     private final String[] adDescs = {
-        "Ubah ide kreatifmu menjadi aplikasi digital yang modern, fungsional, dan sesuai kebutuhan bersama Olivera Studio.",
-        "Dari game 2D hingga 3D, wujudkan konsep game unikmu dengan pengembangan yang kreatif dan inovatif.",
-        "Tingkatkan citra bisnismu dengan website responsif, desain menarik, dan pengalaman pengguna yang nyaman."
+        "Fikrinizi Olivera Studio ile modern bir uygulamaya dönüştürün.",
+        "2D ve 3D oyun fikirlerinizi hayata geçirin.",
+        "Duyarlı ve şık bir web sitesiyle işletmenizi tanıtın."
     };
 
     @Override
@@ -114,8 +114,8 @@ public class SkipAdActivity extends AppCompatActivity {
 
         movie = PlaylistManager.getInstance().getMovieById(movieId);
         if (movie == null) {
-            movie = new Movie(movieId, "Suka Film", "Suka Film", 2024, "2j 15m", 8.5, quality != null ? quality : "1080p Full HD",
-                    "Aksi", "Film siap diunduh.", "Sutradara", "Pemeran", "", "", defaultUrl != null ? defaultUrl : "",
+            movie = new Movie(movieId, "Suka Film", "Suka Film", 2024, "2sa 15dk", 8.5, quality != null ? quality : "1080p Full HD",
+                    "Aksiyon", "Video indirmeye hazır.", "Yönetmen", "Oyuncular", "", "", defaultUrl != null ? defaultUrl : "",
                     defaultUrl != null ? defaultUrl : "", defaultUrl != null ? defaultUrl : "", defaultUrl != null ? defaultUrl : "",
                     size != null ? size : "2.4 GB", size != null ? size : "1.1 GB", size != null ? size : "500 MB");
         }
@@ -165,7 +165,7 @@ public class SkipAdActivity extends AppCompatActivity {
 
     private void setupMovieHeader() {
         txtMovieTitle.setText(movie.getTitle());
-        txtMovieQualitySize.setText("Resolusi: " + quality + " • " + size);
+        txtMovieQualitySize.setText("Kalite: " + quality + " • " + size);
 
         Glide.with(this)
                 .load(movie.getPosterUrl())
@@ -192,17 +192,17 @@ public class SkipAdActivity extends AppCompatActivity {
         currentStage = stage;
         updateStepperUI(stage);
 
-        txtAppBarStage.setText("Verifikasi Unduhan (" + stage + "/3)");
+        txtAppBarStage.setText("İndirme adımı (" + stage + "/3)");
 
         if (stage == 1) {
-            txtStageHeading.setText("Tahap 1 dari 3: Verifikasi Server Unduhan");
-            txtStageDescription.setText("Menghubungkan ke server CDN utama untuk mengamankan link unduhan...");
+            txtStageHeading.setText("Adım 1 / 3");
+            txtStageDescription.setText("İndirmeden önce lütfen bekleyin.");
         } else if (stage == 2) {
-            txtStageHeading.setText("Tahap 2 dari 3: Menyiapkan Akses Kilat Suka Film");
-            txtStageDescription.setText("Mengalokasikan jalur server prioritas tanpa antrean untuk perangkat Anda...");
+            txtStageHeading.setText("Adım 2 / 3");
+            txtStageDescription.setText("İndirmeden önce lütfen bekleyin.");
         } else {
-            txtStageHeading.setText("Tahap 3 dari 3: Tautan Unduhan Siap Digunakan!");
-            txtStageDescription.setText("Verifikasi selesai. Tautan resmi siap disimpan ke folder /Suka Film/ perangkat Anda.");
+            txtStageHeading.setText("Adım 3 / 3");
+            txtStageDescription.setText("Video /Suka Film/ klasörüne kaydedilecek.");
         }
 
         int adIndex = stage - 1;
@@ -255,36 +255,36 @@ public class SkipAdActivity extends AppCompatActivity {
         btnActionSkip.setEnabled(false);
         btnActionSkip.setBackgroundResource(R.drawable.bg_btn_dark);
         btnActionSkip.setTextColor(0xFF94A3B8);
-        btnActionSkip.setText("Menunggu Iklan (10 Detik)");
+        btnActionSkip.setText("Reklam bekleniyor (10 sn)");
         progTimerBar.setProgress(0);
 
         countDownTimer = new CountDownTimer(STAGE_DURATION_MS, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int secondsRemaining = (int) Math.ceil(millisUntilFinished / 1000.0);
-                txtCountdownLabel.setText("Tunggu " + secondsRemaining + " detik untuk melanjutkan...");
-                btnActionSkip.setText("Menunggu Iklan (" + secondsRemaining + " Detik)");
+                txtCountdownLabel.setText("Kalan süre: " + secondsRemaining + " saniye");
+                btnActionSkip.setText("Reklam bekleniyor (" + secondsRemaining + " sn)");
                 progTimerBar.setProgress(10 - secondsRemaining);
             }
 
             @Override
             public void onFinish() {
                 progTimerBar.setProgress(10);
-                txtCountdownLabel.setText("Hitung mundur selesai! Tombol lewati telah aktif.");
+                txtCountdownLabel.setText("Süre doldu, devam edebilirsiniz.");
                 btnActionSkip.setEnabled(true);
 
                 if (stage == 1) {
                     btnActionSkip.setBackgroundResource(R.drawable.bg_btn_gold);
                     btnActionSkip.setTextColor(0xFF0B0E14);
-                    btnActionSkip.setText("Lewati Iklan & Lanjut ke Tahap 2");
+                    btnActionSkip.setText("Reklamı geç: Adım 2");
                 } else if (stage == 2) {
                     btnActionSkip.setBackgroundResource(R.drawable.bg_btn_gold);
                     btnActionSkip.setTextColor(0xFF0B0E14);
-                    btnActionSkip.setText("Lewati Iklan & Lanjut ke Tahap 3 (Terakhir)");
+                    btnActionSkip.setText("Reklamı geç: Son adım");
                 } else {
                     btnActionSkip.setBackgroundResource(R.drawable.bg_btn_green);
                     btnActionSkip.setTextColor(0xFFFFFFFF);
-                    btnActionSkip.setText("Mulai Unduh Film Sekarang");
+                    btnActionSkip.setText("İndirmeyi başlat");
                 }
             }
         }.start();
@@ -296,19 +296,19 @@ public class SkipAdActivity extends AppCompatActivity {
                 && checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != android.content.pm.PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-            Toast.makeText(this, "Izinkan akses penyimpanan, lalu ketuk tombol lagi.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Depolama izni verin, sonra düğmeye tekrar dokunun.", Toast.LENGTH_LONG).show();
             return;
         }
         String path = android.net.Uri.parse(defaultUrl).getPath();
         String lowerPath = path == null ? "" : path.toLowerCase(java.util.Locale.ROOT);
         if (lowerPath.endsWith(".m3u8") || lowerPath.endsWith(".m3u")) {
-            Toast.makeText(this, "Siaran HLS (m3u8) tidak bisa diunduh. Gunakan tombol putar.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "HLS (m3u8) yayınları indirilemez. Oynat düğmesini kullanın.", Toast.LENGTH_LONG).show();
             return;
         }
 
         btnActionSkip.setEnabled(false);
         downloadHelper.startDownload(movie, quality, defaultUrl, size);
-        Toast.makeText(this, "Unduhan dimulai! Tersimpan di /Suka Film/", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "İndirme başladı: /Suka Film/", Toast.LENGTH_LONG).show();
         startActivity(new Intent(this, DownloadsActivity.class));
         finish();
     }

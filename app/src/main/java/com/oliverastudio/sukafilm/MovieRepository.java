@@ -56,7 +56,7 @@ public class MovieRepository {
     }
 
     public synchronized List<Movie> getMoviesByGenre(String genre) {
-        if (genre == null || genre.equalsIgnoreCase("Semua") || genre.isEmpty()) {
+        if (genre == null || genre.equalsIgnoreCase("Tümü") || genre.isEmpty()) {
             return getAllMovies();
         }
         List<Movie> filtered = new ArrayList<>();

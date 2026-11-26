@@ -19,14 +19,14 @@
             android:src="@drawable/ic_filter"
             android:scaleType="center"
             android:focusable="false"
-            android:contentDescription="FilterTahun" />
+            android:contentDescription="Yıl filtresi" />
         <TextView
             android:id="@+id/textview88"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:text="Pilih Tahun Rilis (Slide)"
+            android:text="Yapım yılı seçin"
             android:textSize="16sp"
             android:textColor="#FFFFFFFF"
             android:textStyle="bold"
@@ -38,14 +38,14 @@
             android:src="@drawable/ic_close"
             android:scaleType="center"
             android:focusable="false"
-            android:contentDescription="Tutup" />
+            android:contentDescription="Kapat" />
     </LinearLayout>
     <TextView
         android:id="@+id/textview89"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Geser slider di bawah untuk memilih tahun film secara presisi atau pilih semua tahun."
+        android:text="Yıl seçmek için kaydırın veya tüm yılları seçin."
         android:textSize="12sp"
         android:textColor="#FF94A3B8"
         android:focusable="false" />
@@ -65,7 +65,7 @@
             android:id="@+id/txt_dialog_year_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tahun Terpilih:"
+            android:text="Seçilen yıl:"
             android:textSize="11sp"
             android:textColor="#FF94A3B8"
             android:focusable="false" />
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Semua Tahun"
+            android:text="Tüm yıllar"
             android:textSize="26sp"
             android:textColor="#FFFACC15"
             android:textStyle="bold"
@@ -125,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:text="Pilihan Cepat:"
+        android:text="Hızlı seçim:"
         android:textSize="11sp"
         android:textColor="#FF94A3B8"
         android:focusable="false" />
@@ -150,7 +150,7 @@
                 android:paddingRight="12dp"
                 android:paddingBottom="6dp"
                 android:background="@drawable/bg_chip_selected"
-                android:text="Semua Tahun"
+                android:text="Tüm yıllar"
                 android:textSize="11sp"
                 android:textColor="#FF0B0E14"
                 android:textStyle="bold"
@@ -239,7 +239,7 @@
             android:layout_weight="1"
             android:layout_marginRight="8dp"
             android:background="@drawable/bg_btn_dark"
-            android:text="Semua Tahun"
+            android:text="Tüm yıllar"
             android:textSize="12sp"
             android:textColor="#FFCBD5E1"
             android:textAllCaps="false" />
@@ -250,7 +250,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="8dp"
             android:background="@drawable/bg_btn_gold"
-            android:text="Terapkan Filter"
+            android:text="Filtreyi uygula"
             android:textSize="12sp"
             android:textColor="#FF0B0E14"
             android:textStyle="bold"

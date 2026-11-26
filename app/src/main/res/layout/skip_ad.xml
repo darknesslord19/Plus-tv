@@ -27,7 +27,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_arrow_back"
                 android:scaleType="center"
-                android:contentDescription="Kembali" />
+                android:contentDescription="Geri" />
         </FrameLayout>
         <TextView
             android:id="@+id/txt_app_bar_stage"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="14dp"
-            android:text="Server Download Suka Film"
+            android:text="Suka Film indirme"
             android:textSize="16sp"
             android:textColor="#FFFFFFFF"
             android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_close"
                 android:scaleType="center"
-                android:contentDescription="Batal" />
+                android:contentDescription="İptal" />
         </FrameLayout>
     </LinearLayout>
     <LinearLayout
@@ -160,7 +160,7 @@
                             android:id="@+id/txt_target_movie_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Judul Film"
+                            android:text="Film adı"
                             android:textSize="14sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold"
@@ -171,7 +171,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Resolusi: 1080p Full HD - 2.4 GB"
+                            android:text="Kalite: 1080p"
                             android:textSize="11sp"
                             android:textColor="#FFF5C518" />
                         <TextView
@@ -179,7 +179,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Tersimpan di: /Suka Film/"
+                            android:text="Konum: /Suka Film/"
                             android:textSize="10sp"
                             android:textColor="#FF94A3B8" />
                     </LinearLayout>
@@ -205,7 +205,7 @@
                         android:id="@+id/txt_stage_heading"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tahap 1 dari 3: Verifikasi Server Unduhan"
+                        android:text="Adım 1 / 3"
                         android:textSize="15sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -214,7 +214,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Menghubungkan ke server CDN utama untuk mengamankan link download berkecepatan tinggi..."
+                        android:text="İndirmeden önce lütfen bekleyin."
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8"
                         android:lineSpacingExtra="2dp" />
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="145dp"
                         android:scaleType="centerCrop"
-                        android:contentDescription="Iklan Sponsor" />
+                        android:contentDescription="Sponsor reklamı" />
                     <LinearLayout
                         android:id="@+id/linear105"
                         android:layout_width="match_parent"
@@ -256,7 +256,7 @@
                             android:paddingRight="6dp"
                             android:paddingBottom="2dp"
                             android:background="@drawable/bg_badge_gold"
-                            android:text="SPONSOR RESMI SUKA FILM"
+                            android:text="REKLAM"
                             android:textSize="9sp"
                             android:textColor="#FF0B0E14"
                             android:textStyle="bold" />
@@ -265,7 +265,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Paket Hiburan Streaming 4K Ultra Cepat"
+                            android:text="Reklam"
                             android:textSize="14sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -274,7 +274,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Nikmati jutaan konten film dan serial terbaik dengan koneksi tanpa batas dan bandwidth prioritas."
+                            android:text="Reklam alanı"
                             android:textSize="12sp"
                             android:textColor="#FF94A3B8" />
                     </LinearLayout>
@@ -301,7 +301,7 @@
                         android:id="@+id/txt_countdown_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tunggu 10 detik untuk melanjutkan..."
+                        android:text="10 saniye bekleyin..."
                         android:textSize="14sp"
                         android:textColor="#FFF5C518"
                         android:textStyle="bold" />
@@ -323,7 +323,7 @@
                 android:layout_height="52dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_btn_dark"
-                android:text="Menunggu Iklan (10 Detik)"
+                android:text="Reklam bekleniyor (10 sn)"
                 android:textSize="14sp"
                 android:textColor="#FF94A3B8"
                 android:textStyle="bold"

@@ -125,9 +125,9 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	private RecyclerView recyclerExplore;
 	private LinearLayout layoutEmptyExplore;
 	
-	private String selectedCountry = "Semua";
-	private String selectedYear = "Semua";
-	private String selectedRating = "Semua";
+	private String selectedCountry = "Tümü";
+	private String selectedYear = "Tümü";
+	private String selectedRating = "Tümü";
 	
 	private TextView btnSubtabBookmarks;
 	private TextView btnSubtabHistory;
@@ -165,7 +165,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	private final Handler autoSlideHandler = new Handler(Looper.getMainLooper());
 	private Runnable autoSlideRunnable;
 	private static final long SLIDE_DELAY_MS = 3500;
-	private String selectedGenre = "Semua";
+	private String selectedGenre = "Tümü";
 	private List<String> currentGenresList = new ArrayList<>();
 	
 	@Override
@@ -369,7 +369,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		findViewById(R.id.btn_playlist_link).setOnClickListener(v -> showPlaylistDialog());
 		
 		btnRetryFirebase.setOnClickListener(v -> {
-			Toast.makeText(this, "Memuat ulang playlist M3U...", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "M3U listesi yeniden yükleniyor...", Toast.LENGTH_SHORT).show();
 			realtimeManager.reload();
 		});
 	}
@@ -404,7 +404,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	}
 	
 	private void applyPlaylistUrl(String url) {
-		selectedGenre = "Semua";
+		selectedGenre = "Tümü";
 		currentGenresList = new ArrayList<>();
 		Toast.makeText(this, "Liste yükleniyor...", Toast.LENGTH_SHORT).show();
 		realtimeManager.setPlaylistUrl(url);
@@ -490,7 +490,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		List<Movie> all = realtimeManager.getCurrentMovies();
 		List<Movie> filtered = new ArrayList<>();
 		
-		if (genre == null || genre.equalsIgnoreCase("Semua")) {
+		if (genre == null || genre.equalsIgnoreCase("Tümü")) {
 			filtered.addAll(all);
 		} else {
 			for (Movie m : all) {
@@ -518,22 +518,22 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		btnPickerYear.setOnClickListener(v -> showYearPickerDialog());
 		
 		btnResetFilter.setOnClickListener(v -> {
-			selectedCountry = "Semua";
-			selectedYear = "Semua";
-			selectedRating = "Semua";
+			selectedCountry = "Tümü";
+			selectedYear = "Tümü";
+			selectedRating = "Tümü";
 			updateFilterPickerLabels();
 			setupRatingChips();
 			applyExploreFilters();
-			Toast.makeText(this, "Filter telah direset ke Semua", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Filtreler sıfırlandı", Toast.LENGTH_SHORT).show();
 		});
 	}
 	
 	private void updateFilterPickerLabels() {
 		if (txtPickerCountryValue != null) {
-			txtPickerCountryValue.setText(selectedCountry.equalsIgnoreCase("Semua") ? "Semua Negara" : selectedCountry);
+			txtPickerCountryValue.setText(selectedCountry.equalsIgnoreCase("Tümü") ? "Tüm ülkeler" : selectedCountry);
 		}
 		if (txtPickerYearValue != null) {
-			txtPickerYearValue.setText(selectedYear.equalsIgnoreCase("Semua") ? "Semua Tahun" : "Tahun " + selectedYear);
+			txtPickerYearValue.setText(selectedYear.equalsIgnoreCase("Tümü") ? "Tüm yıllar" : "Yıl: " + selectedYear);
 		}
 	}
 	
@@ -561,17 +561,17 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		final String[] tempYear = {selectedYear};
 		
-		if (selectedYear.equalsIgnoreCase("Semua")) {
-			txtYearDisplay.setText("Semua Tahun");
+		if (selectedYear.equalsIgnoreCase("Tümü")) {
+			txtYearDisplay.setText("Tüm yıllar");
 			seekBarYear.setProgress(34);
 		} else {
 			try {
 				int y = Integer.parseInt(selectedYear);
 				int progress = Math.max(0, Math.min(36, y - 1990));
 				seekBarYear.setProgress(progress);
-				txtYearDisplay.setText("Tahun " + y);
+				txtYearDisplay.setText("Yıl: " + y);
 			} catch (Exception e) {
-				txtYearDisplay.setText("Semua Tahun");
+				txtYearDisplay.setText("Tüm yıllar");
 			}
 		}
 		
@@ -581,7 +581,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 				if (fromUser) {
 					int calcYear = 1990 + progress;
 					tempYear[0] = String.valueOf(calcYear);
-					txtYearDisplay.setText("Tahun " + calcYear);
+					txtYearDisplay.setText("Yıl: " + calcYear);
 				}
 			}
 			
@@ -594,12 +594,12 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		View.OnClickListener presetListener = v -> {
 			if (v == chipAll) {
-				tempYear[0] = "Semua";
-				txtYearDisplay.setText("Semua Tahun");
+				tempYear[0] = "Tümü";
+				txtYearDisplay.setText("Tüm yıllar");
 			} else if (v instanceof TextView) {
 				String yStr = ((TextView) v).getText().toString();
 				tempYear[0] = yStr;
-				txtYearDisplay.setText("Tahun " + yStr);
+				txtYearDisplay.setText("Yıl: " + yStr);
 				try {
 					int y = Integer.parseInt(yStr);
 					seekBarYear.setProgress(Math.max(0, Math.min(36, y - 1990)));
@@ -616,8 +616,8 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		if (btnResetAll != null) {
 			btnResetAll.setOnClickListener(v -> {
-				tempYear[0] = "Semua";
-				txtYearDisplay.setText("Semua Tahun");
+				tempYear[0] = "Tümü";
+				txtYearDisplay.setText("Tüm yıllar");
 			});
 		}
 		
@@ -653,15 +653,15 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		Button btnApply = dialog.findViewById(R.id.btn_dialog_country_apply);
 		
 		final String[][] countryData = {
-			{"Semua", "Semua Negara", "🌐", "Seluruh negara asal film"},
-			{"Indonesia", "Indonesia", "🇮🇩", "Film dan serial lokal Indonesia"},
-			{"Korea", "Korea Selatan", "🇰🇷", "K-Drama dan sinema Korea"},
-			{"Jepang", "Jepang", "🇯🇵", "Anime dan film bioskop Jepang"},
-			{"Barat", "Barat (Hollywood)", "🎬", "Film internasional / Amerika & Eropa"},
-			{"Thailand", "Thailand", "🇹🇭", "Film komedi dan horor Thailand"},
-			{"China", "China (Mandarin)", "🇨🇳", "Wuxia, aksi, dan drama Mandarin"},
-			{"India", "India (Bollywood)", "🇮🇳", "Film Bollywood dan aksi India"},
-			{"Inggris", "Inggris (UK)", "🇬🇧", "Film drama dan thriller Inggris"}
+			{"Tümü", "Tüm ülkeler", "🌐", "Tüm yapım ülkeleri"},
+			{"Endonezya", "Endonezya", "🇮🇩", "Endonezya yapımları"},
+			{"Kore", "Güney Kore", "🇰🇷", "Kore dizi ve filmleri"},
+			{"Japonya", "Japonya", "🇯🇵", "Anime ve Japon filmleri"},
+			{"Batı", "Batı (Hollywood)", "🎬", "Amerika ve Avrupa yapımları"},
+			{"Tayland", "Tayland", "🇹🇭", "Tayland yapımları"},
+			{"Çin", "Çin (Mandarin)", "🇨🇳", "Mandarin yapımları"},
+			{"Hindistan", "Hindistan (Bollywood)", "🇮🇳", "Hint yapımları"},
+			{"İngiltere", "İngiltere (UK)", "🇬🇧", "İngiliz yapımları"}
 		};
 		
 		final String[] tempCountry = {selectedCountry};
@@ -732,7 +732,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		if (btnAll != null) {
 			btnAll.setOnClickListener(v -> {
-				selectedCountry = "Semua";
+				selectedCountry = "Tümü";
 				updateFilterPickerLabels();
 				applyExploreFilters();
 				dialog.dismiss();
@@ -756,7 +756,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	}
 	
 	private void setupRatingChips() {
-		String[] ratings = {"Semua", "8.5+", "8.0+", "7.0+"};
+		String[] ratings = {"Tümü", "8.5+", "8.0+", "7.0+"};
 		layoutFilterRatings.removeAllViews();
 		for (String r : ratings) {
 			TextView chip = createFilterChip(r, r.equalsIgnoreCase(selectedRating));
@@ -798,10 +798,10 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		List<Movie> filtered = new ArrayList<>();
 		
 		for (Movie m : all) {
-			boolean matchCountry = selectedCountry.equalsIgnoreCase("Semua") ||
+			boolean matchCountry = selectedCountry.equalsIgnoreCase("Tümü") ||
 			(m.getCountry() != null && m.getCountry().equalsIgnoreCase(selectedCountry));
 			
-			boolean matchYear = selectedYear.equalsIgnoreCase("Semua") ||
+			boolean matchYear = selectedYear.equalsIgnoreCase("Tümü") ||
 			String.valueOf(m.getYear()).equalsIgnoreCase(selectedYear);
 			
 			boolean matchRating = true;
@@ -819,7 +819,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		}
 		
 		exploreAdapter.updateList(filtered);
-		txtExploreResultCount.setText("Hasil Filter: " + filtered.size() + " Film");
+		txtExploreResultCount.setText("Filtre sonucu: " + filtered.size() + " Film");
 		
 		if (filtered.isEmpty()) {
 			layoutEmptyExplore.setVisibility(View.VISIBLE);
@@ -857,14 +857,14 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		btnClearHistory.setOnClickListener(v -> {
 			new AlertDialog.Builder(this)
-			.setTitle("Hapus Riwayat Nonton")
-			.setMessage("Apakah Anda yakin ingin menghapus semua riwayat tonton film?")
-			.setPositiveButton("Hapus", (dialog, which) -> {
+			.setTitle("İzleme geçmişini sil")
+			.setMessage("Tüm izleme geçmişi silinsin mi?")
+			.setPositiveButton("Sil", (dialog, which) -> {
 				favoritesManager.clearHistory();
 				refreshFavoritesTab();
-				Toast.makeText(this, "Riwayat tonton telah dibersihkan", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "İzleme geçmişi temizlendi", Toast.LENGTH_SHORT).show();
 			})
-			.setNegativeButton("Batal", null)
+			.setNegativeButton("İptal", null)
 			.show();
 		});
 	}
@@ -878,8 +878,8 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 				if (m != null) displayList.add(m);
 			}
 			imgEmptyFavIcon.setImageResource(R.drawable.ic_nav_favorite);
-			txtEmptyFavTitle.setText("Belum Ada Film yang Disimpan");
-			txtEmptyFavDesc.setText("Tandai film favorit dengan tombol bookmark di halaman detail untuk melihatnya di sini.");
+			txtEmptyFavTitle.setText("Henüz kaydedilen film yok");
+			txtEmptyFavDesc.setText("Detay sayfasındaki yer imi düğmesiyle favori ekleyin.");
 		} else {
 			List<Integer> ids = favoritesManager.getWatchHistoryMovieIds();
 			for (int id : ids) {
@@ -887,8 +887,8 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 				if (m != null) displayList.add(m);
 			}
 			imgEmptyFavIcon.setImageResource(R.drawable.ic_history);
-			txtEmptyFavTitle.setText("Belum Ada Riwayat Tonton");
-			txtEmptyFavDesc.setText("Film yang Anda buka atau tonton akan otomatis tercatat di halaman riwayat ini.");
+			txtEmptyFavTitle.setText("İzleme geçmişi boş");
+			txtEmptyFavDesc.setText("Açtığınız filmler burada görünür.");
 		}
 		
 		favoritesAdapter.updateList(displayList);
@@ -915,27 +915,27 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 						try {
 							startActivity(intent);
 						} catch (Exception e) {
-							Toast.makeText(MainActivity.this, "Tidak ada pemutar video terpasang", Toast.LENGTH_SHORT).show();
+							Toast.makeText(MainActivity.this, "Video oynatıcı bulunamadı", Toast.LENGTH_SHORT).show();
 						}
 					} else {
-						Toast.makeText(MainActivity.this, "Berkas unduhan tidak ditemukan di penyimpanan", Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this, "İndirilen dosya bulunamadı", Toast.LENGTH_SHORT).show();
 					}
 				} else {
-					Toast.makeText(MainActivity.this, "Unduhan masih berlangsung", Toast.LENGTH_SHORT).show();
+					Toast.makeText(MainActivity.this, "İndirme devam ediyor", Toast.LENGTH_SHORT).show();
 				}
 			}
 			
 			@Override
 			public void onDeleteDownload(DownloadItem item) {
 				new AlertDialog.Builder(MainActivity.this)
-				.setTitle("Hapus Unduhan")
-				.setMessage("Hapus berkas '" + item.getMovieTitle() + "'?")
-				.setPositiveButton("Hapus", (dialog, which) -> {
+				.setTitle("İndirmeyi sil")
+				.setMessage("Silinsin mi: '" + item.getMovieTitle() + "'?")
+				.setPositiveButton("Sil", (dialog, which) -> {
 					downloadHelper.deleteDownload(item.getDownloadId());
 					refreshDownloadsTab();
 					updateDownloadBadge();
 				})
-				.setNegativeButton("Batal", null)
+				.setNegativeButton("İptal", null)
 				.show();
 			}
 		});
@@ -947,7 +947,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	private void refreshDownloadsTab() {
 		List<DownloadItem> downloads = downloadHelper.getAllDownloads();
 		tabDownloadAdapter.updateList(downloads);
-		txtTabDownloadsCount.setText(downloads.size() + " Berkas");
+		txtTabDownloadsCount.setText(downloads.size() + " dosya");
 		txtTabFolderPath.setText(downloadHelper.getDownloadFolderPath());
 		
 		if (downloads.isEmpty()) {
@@ -970,7 +970,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			layoutSectionTopRated.setVisibility(View.GONE);
 			layoutSectionPopular.setVisibility(View.GONE);
 			
-			txtFirebaseStatus.setText("Disconnected");
+			txtFirebaseStatus.setText("Bağlı değil");
 			txtFirebaseStatus.setTextColor(Color.parseColor("#94A3B8"));
 			dotFirebaseStatus.setBackgroundColor(Color.parseColor("#64748B"));
 			txtMovieCount.setText("0 Film");
@@ -983,7 +983,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			layoutSectionTopRated.setVisibility(View.VISIBLE);
 			layoutSectionPopular.setVisibility(View.VISIBLE);
 			
-			txtFirebaseStatus.setText("Connected (" + movies.size() + ")");
+			txtFirebaseStatus.setText("Bağlı (" + movies.size() + ")");
 			txtFirebaseStatus.setTextColor(Color.parseColor("#10B981"));
 			dotFirebaseStatus.setBackgroundColor(Color.parseColor("#10B981"));
 			
@@ -1066,7 +1066,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		
 		if (list.isEmpty()) {
 			list = new ArrayList<>();
-			list.add("Semua");
+			list.add("Tümü");
 		}
 		
 		for (String g : list) {

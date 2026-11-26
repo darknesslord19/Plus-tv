@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:contentDescription="BackdropFilm" />
+                    android:contentDescription="Film görseli" />
                 <View
                     android:id="@+id/view69"
                     android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                         android:layout_height="28dp"
                         android:src="@drawable/ic_play"
                         android:scaleType="fitCenter"
-                        android:contentDescription="PlayTrailer"
+                        android:contentDescription="Oynat"
                         android:tint="#000000" />
                 </LinearLayout>
                 <FrameLayout
@@ -191,7 +191,7 @@
                         android:id="@+id/txt_detail_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Judul Film"
+                        android:text="Film adı"
                         android:textSize="18sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -200,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Original Title (2024)"
+                        android:text="Özgün ad (2024)"
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8" />
                     <LinearLayout
@@ -228,7 +228,7 @@
                                 android:layout_height="12dp"
                                 android:src="@drawable/ic_star"
                                 android:scaleType="fitCenter"
-                                android:contentDescription="Star"
+                                android:contentDescription="Yıldız"
                                 android:tint="#000000" />
                             <TextView
                                 android:id="@+id/txt_detail_rating"
@@ -272,7 +272,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="2j 46m - Rilis: 2024"
+                        android:text="2sa 46dk - 2024"
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8" />
                 </LinearLayout>
@@ -300,14 +300,14 @@
                         android:layout_height="18dp"
                         android:src="@drawable/ic_play"
                         android:scaleType="center"
-                        android:contentDescription="Play"
+                        android:contentDescription="Oynat"
                         android:tint="#000000" />
                     <TextView
                         android:id="@+id/textview60"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
-                        android:text="Nonton Online"
+                        android:text="Çevrimiçi izle"
                         android:textSize="13sp"
                         android:textColor="#FF0B0E14"
                         android:textStyle="bold" />
@@ -327,13 +327,13 @@
                         android:layout_height="18dp"
                         android:src="@drawable/ic_download"
                         android:scaleType="center"
-                        android:contentDescription="Download" />
+                        android:contentDescription="İndir" />
                     <TextView
                         android:id="@+id/textview61"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
-                        android:text="Download Film"
+                        android:text="Filmi indir"
                         android:textSize="13sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -352,7 +352,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_nav_favorite"
                         android:scaleType="center"
-                        android:contentDescription="SimpankeFavorit" />
+                        android:contentDescription="Favorilere ekle" />
                 </FrameLayout>
             </LinearLayout>
             <androidx.cardview.widget.CardView
@@ -385,13 +385,13 @@
                             android:layout_height="16dp"
                             android:src="@drawable/ic_download"
                             android:scaleType="center"
-                            android:contentDescription="DownloadInfo" />
+                            android:contentDescription="İndirme bilgisi" />
                         <TextView
                             android:id="@+id/textview62"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
-                            android:text="Server Download Suka Film Aktif"
+                            android:text="İndirme seçenekleri"
                             android:textSize="13sp"
                             android:textColor="#FFF5C518"
                             android:textStyle="bold" />
@@ -401,7 +401,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="Tersedia: 1080p (2.4 GB) | 720p (1.1 GB) | 480p (520 MB)\\nFormat: MP4 H.264 • Audio AC3 Stereo • Subtitle Indonesia Hardsub"
+                        android:text="Tüm seçenekler aynı bağlantıyı kullanır"
                         android:textSize="11sp"
                         android:textColor="#FF94A3B8"
                         android:lineSpacingExtra="3dp" />
@@ -427,7 +427,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Pilihan Episode &amp; Season"
+                        android:text="Bölümler"
                         android:textSize="15sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -440,7 +440,7 @@
                         android:paddingRight="6dp"
                         android:paddingBottom="2dp"
                         android:background="@drawable/bg_badge_gold"
-                        android:text="1 Episode"
+                        android:text="1 bölüm"
                         android:textSize="10sp"
                         android:textColor="#FF0B0E14"
                         android:textStyle="bold" />
@@ -475,7 +475,7 @@
                     android:id="@+id/textview64"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sinopsis Lengkap"
+                    android:text="Açıklama"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -484,7 +484,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Deskripsi sinopsis film..."
+                    android:text="Film açıklaması..."
                     android:textSize="13sp"
                     android:textColor="#FFCBD5E1"
                     android:lineSpacingExtra="4dp" />
@@ -501,7 +501,7 @@
                     android:id="@+id/textview65"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Informasi Film"
+                    android:text="Film bilgisi"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -515,7 +515,7 @@
                         android:id="@+id/textview66"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Sutradara:"
+                        android:text="Yönetmen:"
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8" />
                     <TextView
@@ -537,7 +537,7 @@
                         android:id="@+id/textview67"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Pemeran:"
+                        android:text="Oyuncular:"
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8" />
                     <TextView
@@ -562,7 +562,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Rekomendasi Serupa"
+                    android:text="Benzer filmler"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -596,7 +596,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_arrow_back"
                 android:scaleType="center"
-                android:contentDescription="Kembali" />
+                android:contentDescription="Geri" />
         </FrameLayout>
         <View
             android:id="@+id/view84"
@@ -615,7 +615,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_folder"
                 android:scaleType="center"
-                android:contentDescription="Unduhan" />
+                android:contentDescription="İndirilenler" />
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>

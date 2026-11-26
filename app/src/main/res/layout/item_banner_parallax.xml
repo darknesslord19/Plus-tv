@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:contentDescription="Backdrop Film" />
+                android:contentDescription="Film görseli" />
             <View
                 android:id="@+id/view140"
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                             android:layout_height="12dp"
                             android:src="@drawable/ic_star"
                             android:scaleType="fitCenter"
-                            android:contentDescription="Rating"
+                            android:contentDescription="Puan"
                             android:tint="#000000" />
                         <TextView
                             android:id="@+id/txt_banner_rating"
@@ -106,7 +106,7 @@
                     android:id="@+id/txt_banner_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Dune: Part Two"
+                    android:text="Film adı"
                     android:textSize="18sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold"
@@ -134,14 +134,14 @@
                             android:layout_height="14dp"
                             android:src="@drawable/ic_play"
                             android:scaleType="fitCenter"
-                            android:contentDescription="Play"
+                            android:contentDescription="Oynat"
                             android:tint="#000000" />
                         <TextView
                             android:id="@+id/textview108"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="6dp"
-                            android:text="Lihat Film"
+                            android:text="Filmi aç"
                             android:textSize="11sp"
                             android:textColor="#FF000000"
                             android:textStyle="bold" />

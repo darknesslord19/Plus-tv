@@ -68,7 +68,7 @@ public class PlaylistManager {
             try {
                 List<Movie> movies = toMovies(M3uParser.parse(download(url)));
                 Set<String> genres = new LinkedHashSet<>();
-                genres.add("Semua");
+                genres.add("Tümü");
                 for (Movie movie : movies) genres.add(movie.getGenre());
                 mainHandler.post(() -> {
                     // Ignore a slow result if the link changed in the meantime.
@@ -121,10 +121,10 @@ public class PlaylistManager {
             String poster = entry.attribute("tvg-logo", "");
             String quality = entry.attribute("quality", "Video");
             String duration = entry.attribute("duration", "");
-            String size = "Ukuran tidak diketahui";
+            String size = "Boyut bilinmiyor";
 
             Movie movie = new Movie(id, entry.title, entry.title, year, duration, rating, quality,
-                    entry.group, entry.attribute("description", "Sinopsis belum tersedia."), "-", "-",
+                    entry.group, entry.attribute("description", "Açıklama yok."), "-", "-",
                     poster, poster, entry.url, entry.url, entry.url, entry.url, size, size, size);
             movie.setCountry(entry.attribute("tvg-country", ""));
 

@@ -47,7 +47,7 @@
                     android:id="@+id/txt_download_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Judul Film"
+                    android:text="Film adı"
                     android:textSize="14sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold"
@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="6dp"
-                        android:text="LK21_Movie.mp4"
+                        android:text="video.mp4"
                         android:textSize="10sp"
                         android:textColor="#FF94A3B8"
                         android:maxLines="1"
@@ -105,7 +105,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Mengunduh (45%)"
+                        android:text="İndiriliyor (%45)"
                         android:textSize="11sp"
                         android:textColor="#FFF5C518" />
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_close"
                         android:scaleType="center"
-                        android:contentDescription="Hapus atau Buka" />
+                        android:contentDescription="Sil veya aç" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>

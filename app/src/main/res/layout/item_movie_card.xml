@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:contentDescription="Poster Film" />
+                android:contentDescription="Film afişi" />
             <TextView
                 android:id="@+id/txt_movie_quality"
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                     android:layout_height="10dp"
                     android:src="@drawable/ic_star"
                     android:scaleType="fitCenter"
-                    android:contentDescription="Rating" />
+                    android:contentDescription="Puan" />
                 <TextView
                     android:id="@+id/txt_movie_rating"
                     android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Judul Film"
+        android:text="Film adı"
         android:textSize="13sp"
         android:textColor="#FFFFFFFF"
         android:textStyle="bold"

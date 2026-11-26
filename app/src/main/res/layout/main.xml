@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
-                    android:text="Connected"
+                    android:text="Bağlı"
                     android:textSize="9sp"
                     android:textColor="#FF10B981"
                     android:textStyle="bold" />
@@ -99,7 +99,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/ic_search"
                 android:scaleType="center"
-                android:contentDescription="CariFilm" />
+                android:contentDescription="Film ara" />
         </FrameLayout>
     </LinearLayout>
     <LinearLayout
@@ -128,7 +128,7 @@
                 android:layout_height="18dp"
                 android:src="@drawable/ic_search"
                 android:scaleType="center"
-                android:contentDescription="Cari" />
+                android:contentDescription="Ara" />
             <EditText
                 android:id="@+id/edt_search"
                 android:layout_width="0dp"
@@ -140,7 +140,7 @@
                 android:textSize="13sp"
                 android:textColor="#FFFFFFFF"
                 android:singleLine="true"
-                android:hint="Cari film, aktor, sutradara..."
+                android:hint="Film ara..."
                 android:textColorHint="#FF64748B"
                 android:inputType="text"
                 android:imeOptions="actionSearch"
@@ -151,7 +151,7 @@
                 android:layout_height="20dp"
                 android:src="@drawable/ic_close"
                 android:scaleType="center"
-                android:contentDescription="HapusPencarian"
+                android:contentDescription="Aramayı temizle"
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
@@ -212,13 +212,13 @@
                         android:layout_height="54dp"
                         android:src="@drawable/ic_folder"
                         android:scaleType="center"
-                        android:contentDescription="Database" />
+                        android:contentDescription="Liste" />
                     <TextView
                         android:id="@+id/textview28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="Playlist M3U Belum Dimuat"
+                        android:text="M3U listesi yüklenmedi"
                         android:textSize="16sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -228,7 +228,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_marginTop="6dp"
-                        android:text="Film dan kategori diambil dari playlist M3U di GitHub."
+                        android:text="Filmler ve kategoriler M3U listesinden alınır."
                         android:textSize="12sp"
                         android:textColor="#FF94A3B8" />
                     <LinearLayout
@@ -246,7 +246,7 @@
                             android:id="@+id/textview30"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cara menambah film:"
+                            android:text="Liste ekleme:"
                             android:textSize="11sp"
                             android:textColor="#FFFACC15"
                             android:textStyle="bold" />
@@ -255,7 +255,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="1. Edit playlist.m3u di GitHub\n2. group-title menjadi kategori\n3. Simpan lalu muat ulang"
+                            android:text="1. Üstteki + M3U düğmesine dokunun\n2. Liste linkini yapıştırın\n3. Kaydet deyin"
                             android:textSize="11sp"
                             android:textColor="#FFCBD5E1" />
                     </LinearLayout>
@@ -267,7 +267,7 @@
                         android:paddingLeft="18dp"
                         android:paddingRight="18dp"
                         android:background="@drawable/bg_btn_gold"
-                        android:text="Muat Ulang Playlist"
+                        android:text="Listeyi yeniden yükle"
                         android:textSize="12sp"
                         android:textColor="#FF0B0E14"
                         android:textStyle="bold"
@@ -311,7 +311,7 @@
                             android:id="@+id/textview32"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rekomendasi Hari Ini"
+                            android:text="Günün önerisi"
                             android:textSize="16sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -346,7 +346,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:contentDescription="RekomendasiBackdrop" />
+                                android:contentDescription="Öneri görseli" />
                             <View
                                 android:id="@+id/view31"
                                 android:layout_width="match_parent"
@@ -373,7 +373,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Judul Rekomendasi"
+                                        android:text="Film adı"
                                         android:textSize="15sp"
                                         android:textColor="#FFFFFFFF"
                                         android:textStyle="bold"
@@ -424,7 +424,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Trending Sekarang"
+                            android:text="Öne çıkanlar"
                             android:textSize="16sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -432,7 +432,7 @@
                             android:id="@+id/textview35"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Top 10"
+                            android:text="İlk 10"
                             android:textSize="12sp"
                             android:textColor="#FFFACC15"
                             android:textStyle="bold" />
@@ -465,7 +465,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Film Rating Tertinggi"
+                            android:text="En yüksek puanlılar"
                             android:textSize="16sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -473,7 +473,7 @@
                             android:id="@+id/textview37"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Skor 8.0+"
+                            android:text="Puan 8.0+"
                             android:textSize="12sp"
                             android:textColor="#FF94A3B8" />
                     </LinearLayout>
@@ -506,7 +506,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Katalog Lengkap"
+                            android:text="Tüm katalog"
                             android:textSize="16sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -552,13 +552,13 @@
                             android:layout_height="48dp"
                             android:src="@drawable/ic_search"
                             android:scaleType="center"
-                            android:contentDescription="TidakDitemukan" />
+                            android:contentDescription="Bulunamadı" />
                         <TextView
                             android:id="@+id/textview38"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Film tidak ditemukan"
+                            android:text="Film bulunamadı"
                             android:textSize="15sp"
                             android:textColor="#FFFFFFFF"
                             android:textStyle="bold" />
@@ -568,7 +568,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:layout_marginTop="4dp"
-                            android:text="Coba gunakan kata kunci judul film lain atau bersihkan pencarian."
+                            android:text="Başka bir ad deneyin veya aramayı temizleyin."
                             android:textSize="12sp"
                             android:textColor="#FF94A3B8" />
                     </LinearLayout>
@@ -603,14 +603,14 @@
                         android:layout_height="18dp"
                         android:src="@drawable/ic_filter"
                         android:scaleType="center"
-                        android:contentDescription="Filter" />
+                        android:contentDescription="Filtre" />
                     <TextView
                         android:id="@+id/textview40"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginLeft="8dp"
-                        android:text="Filter Lanjutan"
+                        android:text="Gelişmiş filtre"
                         android:textSize="15sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -622,7 +622,7 @@
                         android:paddingTop="6dp"
                         android:paddingRight="6dp"
                         android:paddingBottom="6dp"
-                        android:text="Reset"
+                        android:text="Sıfırla"
                         android:textSize="12sp"
                         android:textColor="#FFEAB308"
                         android:textStyle="bold" />
@@ -658,7 +658,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Negara Asal"
+                                android:text="Yapım ülkesi"
                                 android:textSize="10sp"
                                 android:textColor="#FF94A3B8" />
                             <ImageView
@@ -667,14 +667,14 @@
                                 android:layout_height="14dp"
                                 android:src="@drawable/ic_nav_explore"
                                 android:scaleType="fitCenter"
-                                android:contentDescription="Negara" />
+                                android:contentDescription="Ülke" />
                         </LinearLayout>
                         <TextView
                             android:id="@+id/txt_picker_country_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:text="Semua Negara"
+                            android:text="Tüm ülkeler"
                             android:textSize="12sp"
                             android:textColor="#FFFACC15"
                             android:textStyle="bold"
@@ -706,7 +706,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Tahun Rilis (Slide)"
+                                android:text="Yapım yılı"
                                 android:textSize="10sp"
                                 android:textColor="#FF94A3B8" />
                             <ImageView
@@ -715,14 +715,14 @@
                                 android:layout_height="14dp"
                                 android:src="@drawable/ic_filter"
                                 android:scaleType="fitCenter"
-                                android:contentDescription="Tahun" />
+                                android:contentDescription="Yıl" />
                         </LinearLayout>
                         <TextView
                             android:id="@+id/txt_picker_year_value"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:text="Semua Tahun"
+                            android:text="Tüm yıllar"
                             android:textSize="12sp"
                             android:textColor="#FFFACC15"
                             android:textStyle="bold"
@@ -741,7 +741,7 @@
                         android:id="@+id/textview43"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:text="Rating:"
+                        android:text="Puan:"
                         android:textSize="11sp"
                         android:textColor="#FF94A3B8" />
                     <HorizontalScrollView
@@ -772,7 +772,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Hasil Filter: 0 Film"
+                    android:text="Filtre sonucu: 0 Film"
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
             </LinearLayout>
@@ -801,13 +801,13 @@
                     android:layout_height="48dp"
                     android:src="@drawable/ic_search"
                     android:scaleType="center"
-                    android:contentDescription="TidakDitemukan" />
+                    android:contentDescription="Bulunamadı" />
                 <TextView
                     android:id="@+id/textview44"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Tidak Ada Film yang Cocok"
+                    android:text="Eşleşen film yok"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -816,7 +816,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="Coba longgarkan kriteria filter atau klik Reset."
+                    android:text="Filtreleri değiştirin veya Sıfırla’ya dokunun."
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
             </LinearLayout>
@@ -845,7 +845,7 @@
                     android:gravity="center"
                     android:layout_marginRight="6dp"
                     android:background="@drawable/bg_btn_gold"
-                    android:text="Disimpan"
+                    android:text="Kaydedilenler"
                     android:textSize="13sp"
                     android:textColor="#FF0B0E14"
                     android:textStyle="bold" />
@@ -857,7 +857,7 @@
                     android:gravity="center"
                     android:layout_marginLeft="6dp"
                     android:background="@drawable/bg_btn_dark"
-                    android:text="Riwayat Tonton"
+                    android:text="İzleme geçmişi"
                     android:textSize="13sp"
                     android:textColor="#FF94A3B8"
                     android:textStyle="bold" />
@@ -877,7 +877,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Film yang baru-baru ini Anda buka"
+                    android:text="Son açtığınız filmler"
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
                 <TextView
@@ -888,7 +888,7 @@
                     android:paddingTop="4dp"
                     android:paddingRight="4dp"
                     android:paddingBottom="4dp"
-                    android:text="Hapus Riwayat"
+                    android:text="Geçmişi sil"
                     android:textSize="11sp"
                     android:textColor="#FFEF4444"
                     android:textStyle="bold" />
@@ -918,13 +918,13 @@
                     android:layout_height="48dp"
                     android:src="@drawable/ic_nav_favorite"
                     android:scaleType="center"
-                    android:contentDescription="Kosong" />
+                    android:contentDescription="Boş" />
                 <TextView
                     android:id="@+id/txt_empty_fav_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Belum Ada Film yang Disimpan"
+                    android:text="Henüz kaydedilen film yok"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -934,7 +934,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="4dp"
-                    android:text="Tandai film favorit Anda dengan ikon bookmark di halaman detail untuk menontonnya nanti."
+                    android:text="Detay sayfasındaki yer imiyle favori ekleyin."
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
             </LinearLayout>
@@ -966,7 +966,7 @@
                     android:layout_height="32dp"
                     android:src="@drawable/ic_folder"
                     android:scaleType="center"
-                    android:contentDescription="Folder" />
+                    android:contentDescription="Klasör" />
                 <LinearLayout
                     android:id="@+id/linear46"
                     android:layout_width="0dp"
@@ -978,7 +978,7 @@
                         android:id="@+id/textview46"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lokasi Unduhan Otomatis"
+                        android:text="İndirme konumu"
                         android:textSize="13sp"
                         android:textColor="#FFFFFFFF"
                         android:textStyle="bold" />
@@ -1002,7 +1002,7 @@
                     android:paddingRight="8dp"
                     android:paddingBottom="3dp"
                     android:background="@drawable/bg_badge_gold"
-                    android:text="OTOMATIS"
+                    android:text="OTOMATİK"
                     android:textSize="10sp"
                     android:textColor="#FF0B0E14"
                     android:textStyle="bold" />
@@ -1021,7 +1021,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Daftar Berkas Film Unduhan"
+                    android:text="İndirilen dosyalar"
                     android:textSize="14sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -1029,7 +1029,7 @@
                     android:id="@+id/txt_tab_downloads_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0 Berkas"
+                    android:text="0 dosya"
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
             </LinearLayout>
@@ -1058,13 +1058,13 @@
                     android:layout_height="48dp"
                     android:src="@drawable/ic_download"
                     android:scaleType="center"
-                    android:contentDescription="Belumadaunduhan" />
+                    android:contentDescription="İndirme yok" />
                 <TextView
                     android:id="@+id/textview49"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Belum Ada Film yang Diunduh"
+                    android:text="Henüz indirme yok"
                     android:textSize="15sp"
                     android:textColor="#FFFFFFFF"
                     android:textStyle="bold" />
@@ -1074,7 +1074,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="4dp"
-                    android:text="Unduh film beresolusi 4K atau 1080p untuk diputar secara offline kapan saja."
+                    android:text="Çevrimdışı izlemek için video indirin."
                     android:textSize="12sp"
                     android:textColor="#FF94A3B8" />
             </LinearLayout>
@@ -1102,13 +1102,13 @@
                 android:layout_height="22dp"
                 android:src="@drawable/ic_nav_home"
                 android:scaleType="center"
-                android:contentDescription="Beranda" />
+                android:contentDescription="Ana sayfa" />
             <TextView
                 android:id="@+id/txt_nav_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Beranda"
+                android:text="Ana sayfa"
                 android:textSize="11sp"
                 android:textColor="#FFFACC15"
                 android:textStyle="bold" />
@@ -1134,13 +1134,13 @@
                 android:layout_height="22dp"
                 android:src="@drawable/ic_nav_explore"
                 android:scaleType="center"
-                android:contentDescription="Eksplor" />
+                android:contentDescription="Keşfet" />
             <TextView
                 android:id="@+id/txt_nav_explore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Eksplor"
+                android:text="Keşfet"
                 android:textSize="11sp"
                 android:textColor="#FF94A3B8" />
             <View
@@ -1165,13 +1165,13 @@
                 android:layout_height="22dp"
                 android:src="@drawable/ic_nav_favorite"
                 android:scaleType="center"
-                android:contentDescription="Favorit" />
+                android:contentDescription="Favoriler" />
             <TextView
                 android:id="@+id/txt_nav_favorites"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Favorit"
+                android:text="Favoriler"
                 android:textSize="11sp"
                 android:textColor="#FF94A3B8" />
             <View
@@ -1201,7 +1201,7 @@
                     android:layout_height="22dp"
                     android:src="@drawable/ic_download"
                     android:scaleType="center"
-                    android:contentDescription="Unduhan" />
+                    android:contentDescription="İndirilenler" />
                 <TextView
                     android:id="@+id/txt_nav_download_badge"
                     android:layout_width="14dp"
@@ -1220,7 +1220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="Unduhan"
+                android:text="İndirilenler"
                 android:textSize="11sp"
                 android:textColor="#FF94A3B8" />
             <View

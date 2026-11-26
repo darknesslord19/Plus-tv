@@ -82,18 +82,18 @@ public class DownloadAdapter extends RecyclerView.Adapter<DownloadAdapter.Downlo
         if (item.getStatus() == DownloadItem.STATUS_SUCCESSFUL || progress >= 100) {
             holder.progressBar.setProgress(100);
             holder.progressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFF22C55E));
-            holder.txtStatusLabel.setText("Selesai Diunduh");
+            holder.txtStatusLabel.setText("İndirildi");
             holder.txtStatusLabel.setTextColor(0xFF22C55E);
             holder.txtBytes.setText(DownloadManagerHelper.formatBytes(item.getTotalBytes()));
             holder.imgActionIcon.setImageResource(R.drawable.ic_check);
         } else if (item.getStatus() == DownloadItem.STATUS_FAILED) {
-            holder.txtStatusLabel.setText("Gagal Mengunduh");
+            holder.txtStatusLabel.setText("İndirme başarısız");
             holder.txtStatusLabel.setTextColor(0xFFEF4444);
             holder.txtBytes.setText(DownloadManagerHelper.formatBytes(item.getDownloadedBytes()) + " / " + DownloadManagerHelper.formatBytes(item.getTotalBytes()));
             holder.imgActionIcon.setImageResource(R.drawable.ic_close);
         } else {
             holder.progressBar.setProgressTintList(android.content.res.ColorStateList.valueOf(0xFFF5C518));
-            holder.txtStatusLabel.setText("Mengunduh (" + progress + "%)");
+            holder.txtStatusLabel.setText("İndiriliyor (" + progress + "%)");
             holder.txtStatusLabel.setTextColor(0xFFF5C518);
             holder.txtBytes.setText(DownloadManagerHelper.formatBytes(item.getDownloadedBytes()) + " / " + DownloadManagerHelper.formatBytes(item.getTotalBytes()));
             holder.imgActionIcon.setImageResource(R.drawable.ic_close);

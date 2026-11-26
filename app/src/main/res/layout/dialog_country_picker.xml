@@ -19,14 +19,14 @@
             android:src="@drawable/ic_nav_explore"
             android:scaleType="center"
             android:focusable="false"
-            android:contentDescription="Negara" />
+            android:contentDescription="Ülke" />
         <TextView
             android:id="@+id/textview81"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:text="Pilih Negara Asal (Custom List)"
+            android:text="Yapım ülkesi seçin"
             android:textSize="16sp"
             android:textColor="#FFFFFFFF"
             android:textStyle="bold"
@@ -38,14 +38,14 @@
             android:src="@drawable/ic_close"
             android:scaleType="center"
             android:focusable="false"
-            android:contentDescription="Tutup" />
+            android:contentDescription="Kapat" />
     </LinearLayout>
     <TextView
         android:id="@+id/textview82"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Pilih negara asal produksi film untuk memfilter katalog secara akurat."
+        android:text="Listeyi yapım ülkesine göre filtreleyin."
         android:textSize="12sp"
         android:textColor="#FF94A3B8"
         android:focusable="false" />
@@ -66,7 +66,7 @@
             android:src="@drawable/ic_search"
             android:scaleType="center"
             android:focusable="false"
-            android:contentDescription="Cari" />
+            android:contentDescription="Ara" />
         <EditText
             android:id="@+id/edt_search_dialog_country"
             android:layout_width="match_parent"
@@ -76,7 +76,7 @@
             android:textSize="12sp"
             android:textColor="#FFFFFFFF"
             android:singleLine="true"
-            android:hint="Cari negara (Indonesia, Korea, dll)..."
+            android:hint="Ülke ara..."
             android:textColorHint="#FF64748B"
             android:inputType="text"
             android:background="@null"
@@ -107,7 +107,7 @@
             android:layout_weight="1"
             android:layout_marginRight="8dp"
             android:background="@drawable/bg_btn_dark"
-            android:text="Semua Negara"
+            android:text="Tüm ülkeler"
             android:textSize="12sp"
             android:textColor="#FFCBD5E1"
             android:textAllCaps="false" />
@@ -118,7 +118,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="8dp"
             android:background="@drawable/bg_btn_gold"
-            android:text="Terapkan Filter"
+            android:text="Filtreyi uygula"
             android:textSize="12sp"
             android:textColor="#FF0B0E14"
             android:textStyle="bold"

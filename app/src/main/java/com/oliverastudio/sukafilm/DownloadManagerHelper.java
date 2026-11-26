@@ -52,7 +52,7 @@ public class DownloadManagerHelper {
 
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
         request.setTitle("Suka Film: " + movie.getTitle() + " (" + quality + ")");
-        request.setDescription("Menyimpan ke folder /" + FOLDER_NAME + "/");
+        request.setDescription("Kaydedilen klasör: /" + FOLDER_NAME + "/");
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 
         String subPath = FOLDER_NAME + "/" + fileName;

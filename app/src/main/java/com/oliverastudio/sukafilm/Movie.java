@@ -29,7 +29,7 @@ public class Movie implements Serializable {
     private double rating;
     private String quality;
     private String genre;
-    private String country = "Barat";
+    private String country = "Batı";
     private int trendingRank = 0;
     private String description;
     private String director;
@@ -105,7 +105,7 @@ public class Movie implements Serializable {
     public String getYearText() { return year > 0 ? String.valueOf(year) : "-"; }
     public String getRatingText() { return rating > 0 ? String.valueOf(rating) : "-"; }
 
-    public String getCountry() { return country != null ? country : "Barat"; }
+    public String getCountry() { return country != null ? country : "Batı"; }
     public void setCountry(String country) { this.country = country; }
 
     public int getTrendingRank() { return trendingRank; }

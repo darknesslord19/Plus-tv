@@ -98,12 +98,12 @@ public class DownloadsActivity extends AppCompatActivity {
             layoutEmpty.setVisibility(View.VISIBLE);
             recyclerDownloads.setVisibility(View.GONE);
             btnClearAll.setVisibility(View.GONE);
-            txtHeaderSummary.setText("Belum ada file yang sedang diunduh.");
+            txtHeaderSummary.setText("Henüz indirilen dosya yok.");
         } else {
             layoutEmpty.setVisibility(View.GONE);
             recyclerDownloads.setVisibility(View.VISIBLE);
             btnClearAll.setVisibility(View.VISIBLE);
-            txtHeaderSummary.setText("Total: " + items.size() + " film • Disimpan di folder /Suka Film/");
+            txtHeaderSummary.setText("Toplam: " + items.size() + " video • /Suka Film/ klasöründe");
         }
     }
 
@@ -114,14 +114,14 @@ public class DownloadsActivity extends AppCompatActivity {
 
         btnClearAll.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Hapus Riwayat Unduhan")
-                    .setMessage("Apakah Anda yakin ingin menghapus semua riwayat unduhan?")
-                    .setPositiveButton("Hapus", (dialog, which) -> {
+                    .setTitle("İndirme geçmişini sil")
+                    .setMessage("Tüm indirmeler silinsin mi?")
+                    .setPositiveButton("Sil", (dialog, which) -> {
                         downloadHelper.clearAllDownloads();
                         refreshDownloadsList();
-                        Toast.makeText(this, "Riwayat unduhan dibersihkan", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "İndirmeler temizlendi", Toast.LENGTH_SHORT).show();
                     })
-                    .setNegativeButton("Batal", null)
+                    .setNegativeButton("İptal", null)
                     .show();
         });
     }
@@ -156,7 +156,7 @@ public class DownloadsActivity extends AppCompatActivity {
             } catch (Exception ignored) {}
         }
 
-        Toast.makeText(this, "Membuka pemutar preview film " + item.getMovieTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Önizleme açılıyor: " + item.getMovieTitle(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MovieDetailActivity.class);
         intent.putExtra("movie_id", item.getMovieId());
         startActivity(intent);
@@ -164,14 +164,14 @@ public class DownloadsActivity extends AppCompatActivity {
 
     private void confirmDeleteDownload(DownloadItem item) {
         new AlertDialog.Builder(this)
-                .setTitle("Batalkan / Hapus Unduhan")
-                .setMessage("Batalkan unduhan untuk " + item.getMovieTitle() + "?")
-                .setPositiveButton("Ya", (dialog, which) -> {
+                .setTitle("İndirmeyi iptal et / sil")
+                .setMessage("İndirme silinsin mi: " + item.getMovieTitle() + "?")
+                .setPositiveButton("Evet", (dialog, which) -> {
                     downloadHelper.deleteDownload(item.getDownloadId());
                     refreshDownloadsList();
-                    Toast.makeText(this, "Unduhan dihapus", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "İndirme silindi", Toast.LENGTH_SHORT).show();
                 })
-                .setNegativeButton("Tidak", null)
+                .setNegativeButton("Hayır", null)
                 .show();
     }
 

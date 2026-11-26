@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 /** Minimal extended-M3U parser (no Android dependencies). */
 public final class M3uParser {
-    public static final String DEFAULT_GROUP = "Lainnya";
+    public static final String DEFAULT_GROUP = "Diğer";
     private static final Pattern ATTRIBUTE = Pattern.compile("([A-Za-z0-9_-]+)=\"([^\"]*)\"");
 
     public static final class Entry {
@@ -73,7 +73,7 @@ public final class M3uParser {
             entry.attributes.put(matcher.group(1).toLowerCase(Locale.ROOT), matcher.group(2));
         }
         String title = comma < 0 ? "" : line.substring(comma + 1).trim();
-        entry.title = title.isEmpty() ? entry.attribute("tvg-name", "Tanpa judul") : title;
+        entry.title = title.isEmpty() ? entry.attribute("tvg-name", "Adsız") : title;
         entry.group = entry.attribute("group-title", DEFAULT_GROUP);
         return entry;
     }

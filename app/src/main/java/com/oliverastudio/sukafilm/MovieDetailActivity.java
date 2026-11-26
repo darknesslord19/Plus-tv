@@ -193,13 +193,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                     "Suka Film",
                     "Suka Film",
                     2024,
-                    "2j 15m",
+                    "2sa 15dk",
                     8.5,
                     "1080p FHD",
-                    "Aksi",
-                    "Playlist sedang dimuat...",
+                    "Aksiyon",
+                    "Liste yükleniyor...",
                     "Suka Film Studio",
-                    "Pemeran",
+                    "Oyuncular",
                     "", "", "", "", "", "",
                     "1.5 GB",
                     "800 MB",
@@ -293,7 +293,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         txtDurationYear.setText(
                 currentMovie.getDuration()
-                        + " • Rilis: "
+                        + " • Yıl: "
                         + currentMovie.getYearText()
         );
 
@@ -302,12 +302,12 @@ public class MovieDetailActivity extends AppCompatActivity {
         txtCast.setText(currentMovie.getCast());
 
         String summary =
-                "Tersedia: 1080p (" + currentMovie.getSize1080p()
+                "Seçenekler: 1080p (" + currentMovie.getSize1080p()
                         + ") | 720p (" + currentMovie.getSize720p()
                         + ") | 480p (" + currentMovie.getSize480p()
                         + ")\n"
-                        + "Format: MP4 H.264 • Audio AC3 Stereo • "
-                        + "Subtitle Indonesia Hardsub";
+                        + "Tüm seçenekler aynı bağlantıyı kullanır"
+                        + "";
 
         txtDownloadSummary.setText(summary);
 
@@ -407,7 +407,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 );
 
                 txtEpisodesCountBadge.setText(
-                        selected.getEpisodes().size() + " Episode"
+                        selected.getEpisodes().size() + " bölüm"
                 );
             });
 
@@ -415,7 +415,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         }
 
         txtEpisodesCountBadge.setText(
-                initialSeason.getEpisodes().size() + " Episode"
+                initialSeason.getEpisodes().size() + " bölüm"
         );
     }
 
@@ -631,8 +631,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
             Toast.makeText(
                     MovieDetailActivity.this,
-                    "Tidak dapat memutar video. "
-                            + "Periksa URL atau formatnya.",
+                    "Video oynatılamıyor. "
+                            + "Linki veya biçimi kontrol edin.",
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -747,7 +747,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         if (url == null || url.trim().isEmpty()) {
             Toast.makeText(
                     this,
-                    "URL video belum tersedia",
+                    "Video linki yok",
                     Toast.LENGTH_SHORT
             ).show();
 
@@ -793,7 +793,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
             Toast.makeText(
                     this,
-                    "URL video tidak valid",
+                    "Video linki geçersiz",
                     Toast.LENGTH_SHORT
             ).show();
         }
@@ -953,8 +953,8 @@ public class MovieDetailActivity extends AppCompatActivity {
                 Toast.makeText(
                         this,
                         isFav
-                                ? "Ditambahkan ke Favorit"
-                                : "Dihapus dari Favorit",
+                                ? "Favorilere eklendi"
+                                : "Favorilerden çıkarıldı",
                         Toast.LENGTH_SHORT
                 ).show();
             });

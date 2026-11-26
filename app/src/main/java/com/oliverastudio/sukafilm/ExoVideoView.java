@@ -14,8 +14,11 @@ import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
 import androidx.media3.common.VideoSize;
+import androidx.media3.datasource.DefaultDataSource;
+import androidx.media3.datasource.DefaultHttpDataSource;
 import androidx.media3.datasource.HttpDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory;
 import androidx.media3.ui.PlayerView;
 
 /** ExoPlayer behind the small subset of the VideoView API that the detail screen uses. */
@@ -24,6 +27,9 @@ public class ExoVideoView extends PlayerView {
     public interface OnBufferingListener { void onBuffering(boolean buffering); }
     public interface OnCompletionListener { void onCompletion(ExoVideoView view); }
     public interface OnErrorListener { void onError(String errorName); }
+
+    private static final String WIKIMEDIA_USER_AGENT =
+            "SukaFilm/1.0 (https://github.com/darknesslord19/Plus-tv) AndroidXMedia3/1.4.1";
 
     private ExoPlayer player;
     // On-screen playback state, so a black screen can be diagnosed from a screenshot.
@@ -61,7 +67,16 @@ public class ExoVideoView extends PlayerView {
         frameDrawn = false;
         status.setVisibility(VISIBLE);
         status.setText("Durum: bağlanıyor");
-        player = new ExoPlayer.Builder(getContext()).build();
+        ExoPlayer.Builder builder = new ExoPlayer.Builder(getContext());
+        String host = uri.getHost();
+        if (host != null && host.endsWith(".wikimedia.org")) {
+            // Wikimedia's User-Agent policy asks clients to name themselves and give a contact URL.
+            DefaultHttpDataSource.Factory http = new DefaultHttpDataSource.Factory()
+                    .setUserAgent(WIKIMEDIA_USER_AGENT);
+            builder.setMediaSourceFactory(new DefaultMediaSourceFactory(getContext())
+                    .setDataSourceFactory(new DefaultDataSource.Factory(getContext(), http)));
+        }
+        player = builder.build();
         player.setAudioAttributes(new AudioAttributes.Builder()
                 .setUsage(C.USAGE_MEDIA)
                 .setContentType(C.AUDIO_CONTENT_TYPE_MOVIE)
@@ -113,7 +128,8 @@ public class ExoVideoView extends PlayerView {
     }
 
     private void showState() {
-        if (player == null) return;
+        // After an error the player goes idle; keep the error text instead of overwriting it.
+        if (player == null || player.getPlayerError() != null) return;
         int state = player.getPlaybackState();
         String name = state == Player.STATE_BUFFERING ? "yükleniyor"
                 : state == Player.STATE_READY ? "hazır"

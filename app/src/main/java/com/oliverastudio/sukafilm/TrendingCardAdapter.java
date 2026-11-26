@@ -67,8 +67,8 @@ public class TrendingCardAdapter extends RecyclerView.Adapter<TrendingCardAdapte
         Movie movie = movieList.get(position);
         holder.txtRank.setText("#" + (position + 1));
         holder.txtTitle.setText(movie.getTitle());
-        holder.txtGenreYear.setText((movie.getGenre() != null ? movie.getGenre() : "Film") + " • " + movie.getYear());
-        holder.txtRating.setText(String.format("%.1f", movie.getRating()));
+        holder.txtGenreYear.setText((movie.getGenre() != null ? movie.getGenre() : "Film") + " • " + movie.getYearText());
+        holder.txtRating.setText(movie.getRatingText());
 
         String quality = movie.getQuality();
         if (quality != null && quality.toUpperCase().contains("4K")) {

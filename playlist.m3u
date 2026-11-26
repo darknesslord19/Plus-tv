@@ -1,0 +1,7 @@
+#EXTM3U
+#EXTINF:-1 group-title="Animasi" year="2008" tvg-logo="",Big Buck Bunny (Test)
+https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/720/Big_Buck_Bunny_720_10s_1MB.mp4
+#EXTINF:-1 group-title="Petualangan" year="2010" tvg-logo="",Sintel (Test)
+https://test-videos.co.uk/vids/sintel/mp4/h264/720/Sintel_720_10s_2MB.mp4
+#EXTINF:-1 group-title="Dokumenter" tvg-logo="",Flower (Test)
+https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4

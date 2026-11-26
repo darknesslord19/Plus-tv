@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
 }
 
-// Firebase values come from environment variables (GitHub secrets). Never hard-code them here.
-def env = { String name, String fallback -> System.getenv(name) ?: fallback }
+// Set the PLAYLIST_URL environment variable (GitHub repository variable) to use another playlist.
+def playlistUrl = System.getenv('PLAYLIST_URL') ?: 'https://raw.githubusercontent.com/darknesslord19/Plus-tv/main/playlist.m3u'
 
 android {
     namespace 'com.oliverastudio.sukafilm'
@@ -16,10 +16,7 @@ android {
         versionCode 1
         versionName '1.0'
 
-        buildConfigField 'String', 'FIREBASE_APP_ID', "\"${env('FIREBASE_APP_ID', '')}\""
-        buildConfigField 'String', 'FIREBASE_API_KEY', "\"${env('FIREBASE_API_KEY', '')}\""
-        buildConfigField 'String', 'FIREBASE_DATABASE_URL', "\"${env('FIREBASE_DATABASE_URL', '')}\""
-        buildConfigField 'String', 'FIREBASE_STORAGE_BUCKET', "\"${env('FIREBASE_STORAGE_BUCKET', '')}\""
+        buildConfigField 'String', 'PLAYLIST_URL', "\"${playlistUrl}\""
     }
 
     buildFeatures { buildConfig true }
@@ -38,7 +35,5 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
     implementation 'androidx.viewpager2:viewpager2:1.1.0'
     implementation 'com.google.android.material:material:1.12.0'
-    implementation platform('com.google.firebase:firebase-bom:33.1.0')
-    implementation 'com.google.firebase:firebase-database'
     implementation 'com.github.bumptech.glide:glide:4.16.0'
 }

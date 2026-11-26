@@ -11,13 +11,18 @@ Bu proje Sketchware yedeğinden Gradle projesine dönüştürüldü.
 2. **Actions > Build APK > Run workflow** (her push'ta da çalışır).
 3. İşlem bitince **Artifacts > SukaFilm-apk** dosyasını indirin.
 
-## Firebase
-**Settings > Secrets and variables > Actions** altına ekleyin:
-`FIREBASE_APP_ID`, `FIREBASE_API_KEY`, `FIREBASE_DATABASE_URL`, `FIREBASE_STORAGE_BUCKET`
+## M3U playlist
+Uygulama listeyi `playlist.m3u` dosyasından (GitHub raw bağlantısı) okur. Dosyayı düzenlemek yeterli; yeni APK gerekmez. Uygulamayı kapatıp açın. GitHub önbelleği yüzünden değişiklik birkaç dakika gecikebilir.
 
-Android uygulaması paket adı: `com.oliverastudio.sukafilm`.
-Örnek veri: `docs/firebase_database_structure.json`. Veritabanı kurallarında herkese yazma izni vermeyin.
-Bu değerler APK içine gömülür; güvenlik, veritabanı kurallarıyla sağlanmalıdır.
-Secrets eklenmezse uygulama film verisi yüklemez.
+```
+#EXTM3U
+#EXTINF:-1 group-title="Kategori" tvg-logo="https://.../poster.jpg" year="2024" rating="7.5",Film Adı
+https://.../video.mp4
+```
+- `group-title` kategori olur. İsteğe bağlı: `tvg-logo`, `year`, `rating`, `tvg-country`, `quality`, `duration`, `description`.
+- Her satır ayrı bir videodur (dizi/sezon gruplaması yok). `#EXTVLCOPT` gibi özel HTTP başlıkları desteklenmez.
+- `.m3u8` yayınları indirilemez. Üç kalite seçeneği aynı bağlantıyı kullanır.
+- Başka liste kullanmak için: Settings > Secrets and variables > Actions > Variables > `PLAYLIST_URL`, sonra yeniden derleyin.
+- Yalnızca kullanım hakkınız olan içerikleri ekleyin.
 
 APK, `signing/` altındaki herkese açık AOSP test anahtarıyla imzalanır. Yalnızca test içindir: bu anahtarla herkes imzalayabilir. Yayın için kendi anahtarınızı kullanın ve depoya yüklemeyin.

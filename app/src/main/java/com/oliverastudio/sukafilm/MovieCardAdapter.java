@@ -68,8 +68,8 @@ public class MovieCardAdapter extends RecyclerView.Adapter<MovieCardAdapter.Movi
         Movie movie = movies.get(position);
 
         holder.txtTitle.setText(movie.getTitle());
-        holder.txtGenreYear.setText((movie.getGenre() != null ? movie.getGenre() : "Film") + " • " + movie.getYear());
-        holder.txtRating.setText(String.format("%.1f", movie.getRating()));
+        holder.txtGenreYear.setText((movie.getGenre() != null ? movie.getGenre() : "Film") + " • " + movie.getYearText());
+        holder.txtRating.setText(movie.getRatingText());
 
         String quality = movie.getQuality();
         if (quality != null && quality.toUpperCase().contains("4K")) {

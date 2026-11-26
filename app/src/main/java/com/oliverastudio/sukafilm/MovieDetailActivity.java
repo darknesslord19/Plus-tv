@@ -179,7 +179,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         int movieId = getIntent().getIntExtra("movie_id", 1);
 
-        currentMovie = FirebaseRealtimeManager.getInstance()
+        currentMovie = PlaylistManager.getInstance()
                 .getMovieById(movieId);
 
         if (currentMovie == null) {
@@ -192,7 +192,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                     8.5,
                     "1080p FHD",
                     "Aksi",
-                    "Katalog film sedang memuat dari Firebase...",
+                    "Playlist sedang dimuat...",
                     "Suka Film Studio",
                     "Pemeran",
                     "", "", "", "", "", "",
@@ -281,14 +281,14 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void populateMovieDetails() {
         txtTitle.setText(currentMovie.getTitle());
         txtOriginalTitle.setText(currentMovie.getOriginalTitle());
-        txtRating.setText(String.valueOf(currentMovie.getRating()));
+        txtRating.setText(currentMovie.getRatingText());
         txtQualityTag.setText(currentMovie.getQuality());
         txtGenreTag.setText(currentMovie.getGenre());
 
         txtDurationYear.setText(
                 currentMovie.getDuration()
                         + " • Rilis: "
-                        + currentMovie.getYear()
+                        + currentMovie.getYearText()
         );
 
         txtSynopsis.setText(currentMovie.getDescription());
@@ -1004,7 +1004,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private void setupSimilarMovies() {
         List<Movie> similarList =
-                FirebaseRealtimeManager.getInstance()
+                PlaylistManager.getInstance()
                         .getCurrentMovies();
 
         recyclerSimilar.setLayoutManager(

@@ -72,7 +72,6 @@ public class SkipAdActivity extends AppCompatActivity {
     private Movie movie;
 
     private DownloadManagerHelper downloadHelper;
-    private FirebaseMovieService firebaseService;
 
     private final String[] adImages = {
             "https://raw.githubusercontent.com/OliveraStudio/SukaFilm/refs/heads/main/app/src/main/assets/ads_example/example_ads.png",
@@ -106,7 +105,6 @@ public class SkipAdActivity extends AppCompatActivity {
 		);
 
         downloadHelper = new DownloadManagerHelper(this);
-        firebaseService = new FirebaseMovieService();
 
         movieId = getIntent().getIntExtra("movie_id", 1);
         quality = getIntent().getStringExtra("quality");
@@ -114,7 +112,7 @@ public class SkipAdActivity extends AppCompatActivity {
         defaultUrl = getIntent().getStringExtra("default_url");
         String customTitle = getIntent().getStringExtra("title_custom");
 
-        movie = FirebaseRealtimeManager.getInstance().getMovieById(movieId);
+        movie = PlaylistManager.getInstance().getMovieById(movieId);
         if (movie == null) {
             movie = new Movie(movieId, "Suka Film", "Suka Film", 2024, "2j 15m", 8.5, quality != null ? quality : "1080p Full HD",
                     "Aksi", "Film siap diunduh.", "Sutradara", "Pemeran", "", "", defaultUrl != null ? defaultUrl : "",
@@ -301,18 +299,18 @@ public class SkipAdActivity extends AppCompatActivity {
             Toast.makeText(this, "Izinkan akses penyimpanan, lalu ketuk tombol lagi.", Toast.LENGTH_LONG).show();
             return;
         }
+        String path = android.net.Uri.parse(defaultUrl).getPath();
+        String lowerPath = path == null ? "" : path.toLowerCase(java.util.Locale.ROOT);
+        if (lowerPath.endsWith(".m3u8") || lowerPath.endsWith(".m3u")) {
+            Toast.makeText(this, "Siaran HLS (m3u8) tidak bisa diunduh. Gunakan tombol putar.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         btnActionSkip.setEnabled(false);
-        btnActionSkip.setText("Mengambil Tautan dari Firebase RTDB...");
-        Toast.makeText(this, "Sinkronisasi tautan dengan Firebase Realtime Database...", Toast.LENGTH_SHORT).show();
-
-        firebaseService.resolveDownloadUrl(movieId, quality, defaultUrl, resolvedUrl -> {
-            long downloadId = downloadHelper.startDownload(movie, quality, resolvedUrl, size);
-            Toast.makeText(SkipAdActivity.this, "Unduhan dimulai! Tersimpan di /Suka Film/", Toast.LENGTH_LONG).show();
-
-            Intent intent = new Intent(SkipAdActivity.this, DownloadsActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        downloadHelper.startDownload(movie, quality, defaultUrl, size);
+        Toast.makeText(this, "Unduhan dimulai! Tersimpan di /Suka Film/", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(this, DownloadsActivity.class));
+        finish();
     }
 
     @Override

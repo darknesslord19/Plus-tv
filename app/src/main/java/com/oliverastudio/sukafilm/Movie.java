@@ -101,6 +101,10 @@ public class Movie implements Serializable {
     public String getGenre() { return genre; }
     public void setGenre(String genre) { this.genre = genre; }
 
+    /** M3U entries often have no year or rating; show a dash instead of 0. */
+    public String getYearText() { return year > 0 ? String.valueOf(year) : "-"; }
+    public String getRatingText() { return rating > 0 ? String.valueOf(rating) : "-"; }
+
     public String getCountry() { return country != null ? country : "Barat"; }
     public void setCountry(String country) { this.country = country; }
 

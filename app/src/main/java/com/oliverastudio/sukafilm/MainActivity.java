@@ -61,7 +61,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements
-FirebaseRealtimeManager.OnMoviesDataChangedListener,
+PlaylistManager.OnMoviesDataChangedListener,
 FavoritesHistoryManager.OnUserDataChangedListener {
 	
 	private static final int TAB_HOME = 0;
@@ -145,7 +145,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	private RecyclerView recyclerTabDownloads;
 	private LinearLayout layoutEmptyTabDownloads;
 	
-	private FirebaseRealtimeManager realtimeManager;
+	private PlaylistManager realtimeManager;
 	private DownloadManagerHelper downloadHelper;
 	private FavoritesHistoryManager favoritesManager;
 	
@@ -177,7 +177,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 		);
 		
-		realtimeManager = FirebaseRealtimeManager.getInstance();
+		realtimeManager = PlaylistManager.getInstance();
 		downloadHelper = new DownloadManagerHelper(this);
 		favoritesManager = FavoritesHistoryManager.getInstance(this);
 		
@@ -359,8 +359,8 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		});
 		
 		btnRetryFirebase.setOnClickListener(v -> {
-			Toast.makeText(this, "Memeriksa data Firebase Realtime Database...", Toast.LENGTH_SHORT).show();
-			updateUIWithMovies(realtimeManager.getCurrentMovies());
+			Toast.makeText(this, "Memuat ulang playlist M3U...", Toast.LENGTH_SHORT).show();
+			realtimeManager.reload();
 		});
 	}
 	
@@ -938,6 +938,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			
 			List<Movie> topRated = getTopRatedList(movies);
 			topRatedAdapter.updateList(topRated);
+			if (topRated.isEmpty()) layoutSectionTopRated.setVisibility(View.GONE);
 			
 			filterMoviesByGenre(selectedGenre);
 			
@@ -959,9 +960,9 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		currentSpotlightMovie = best;
 		
 		txtSpotlightTitle.setText(best.getTitle());
-		txtSpotlightRating.setText("★ " + String.format("%.1f", best.getRating()));
+		txtSpotlightRating.setText("★ " + best.getRatingText());
 		txtSpotlightMeta.setText((best.getGenre() != null ? best.getGenre() : "Film") + " • " +
-		best.getYear() + " • " + (best.getQuality() != null ? best.getQuality() : "HD"));
+		best.getYearText() + " • " + (best.getQuality() != null ? best.getQuality() : "HD"));
 		
 		Glide.with(this)
 		.load(best.getBackdropUrl())

@@ -68,10 +68,10 @@ public class BannerParallaxAdapter extends RecyclerView.Adapter<BannerParallaxAd
         Movie movie = movies.get(position);
 
         holder.txtTitle.setText(movie.getTitle());
-        holder.txtRating.setText(String.format("%.1f", movie.getRating()));
+        holder.txtRating.setText(movie.getRatingText());
         holder.txtQuality.setText(movie.getQuality());
         holder.txtGenre.setText(movie.getGenre());
-        holder.txtDuration.setText(movie.getDuration() + " • " + movie.getYear());
+        holder.txtDuration.setText(movie.getDuration() + " • " + movie.getYearText());
 
         Glide.with(context)
                 .load(movie.getBackdropUrl())

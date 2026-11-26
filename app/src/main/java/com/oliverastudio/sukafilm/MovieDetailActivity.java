@@ -644,6 +644,16 @@ public class MovieDetailActivity extends AppCompatActivity {
         );
     }
 
+    /** While playing, stop the info row and the top shortcut from covering the player. */
+    private void setPlayerOverlap(boolean playing) {
+        View info = findViewById(R.id.linear70);
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) info.getLayoutParams();
+        // The layout pulls this row 40dp up over the backdrop image.
+        params.topMargin = playing ? 0 : Math.round(-40 * getResources().getDisplayMetrics().density);
+        info.setLayoutParams(params);
+        findViewById(R.id.btn_detail_downloads_shortcut).setVisibility(playing ? View.GONE : View.VISIBLE);
+    }
+
     private void setupFullscreen() {
         btnVideoFullscreen = findViewById(R.id.btn_video_fullscreen);
         btnVideoFullscreen.setOnClickListener(v -> setFullscreen(!isFullscreen));
@@ -767,6 +777,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         controlsVisible = true;
 
         layoutVideoContainer.setVisibility(View.VISIBLE);
+        setPlayerOverlap(true);
         progVideoBuffering.setVisibility(View.VISIBLE);
 
         layoutCustomVideoControls.setVisibility(View.VISIBLE);
@@ -801,6 +812,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private void stopAndHideVideo() {
         setFullscreen(false);
+        setPlayerOverlap(false);
 
         controlsHandler.removeCallbacks(
                 hideControlsRunnable

@@ -10,6 +10,7 @@ import androidx.media3.common.C;
 import androidx.media3.common.MediaItem;
 import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
+import androidx.media3.datasource.HttpDataSource;
 import androidx.media3.exoplayer.ExoPlayer;
 import androidx.media3.ui.PlayerView;
 
@@ -61,7 +62,12 @@ public class ExoVideoView extends PlayerView {
 
             @Override
             public void onPlayerError(@NonNull PlaybackException error) {
-                if (errorListener != null) errorListener.onError(error.getErrorCodeName());
+                String details = error.getErrorCodeName();
+                Throwable cause = error.getCause();
+                if (cause instanceof HttpDataSource.InvalidResponseCodeException) {
+                    details += " (HTTP " + ((HttpDataSource.InvalidResponseCodeException) cause).responseCode + ")";
+                }
+                if (errorListener != null) errorListener.onError(details);
             }
         });
         setPlayer(player);

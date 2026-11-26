@@ -614,12 +614,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                     videoProgressRunnable
             );
 
-            Toast.makeText(
-                    MovieDetailActivity.this,
-                    "Video oynatılamıyor. "
-                            + "Linki veya biçimi kontrol edin. (" + errorName + ")",
-                    Toast.LENGTH_LONG
-            ).show();
+            if (!isFinishing()) {
+                new android.app.AlertDialog.Builder(MovieDetailActivity.this)
+                        .setTitle("Video oynatılamıyor")
+                        .setMessage(currentMovie.getTitle() + "\n\nHata kodu: " + errorName)
+                        .setPositiveButton("Tamam", null)
+                        .show();
+            }
         });
 
         btnCloseVideo.setOnClickListener(

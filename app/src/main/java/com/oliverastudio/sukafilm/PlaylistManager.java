@@ -1,5 +1,7 @@
 package com.oliverastudio.sukafilm;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -20,6 +22,8 @@ import java.util.concurrent.Executors;
 public class PlaylistManager {
     private static final String TAG = "PlaylistManager";
     private static PlaylistManager instance;
+    private static final String KEY_URL = "playlist_url";
+    private static SharedPreferences preferences;
 
     private final List<Movie> currentMovies = new ArrayList<>();
     private final List<String> currentGenres = new ArrayList<>();
@@ -40,15 +44,36 @@ public class PlaylistManager {
         return instance;
     }
 
+    static void init(Context context) {
+        preferences = context.getSharedPreferences("playlist", Context.MODE_PRIVATE);
+    }
+
+    /** The user's link, or the built-in default. */
+    public String getPlaylistUrl() {
+        return preferences.getString(KEY_URL, BuildConfig.PLAYLIST_URL);
+    }
+
+    /** Saves a new link (null restores the default) and loads it. Call on the main thread. */
+    public void setPlaylistUrl(String url) {
+        if (url == null) preferences.edit().remove(KEY_URL).apply();
+        else preferences.edit().putString(KEY_URL, url).apply();
+        publish(new ArrayList<>(), new ArrayList<>());
+        reload();
+    }
+
     /** Downloads the playlist again. On failure the last loaded list is kept. */
     public void reload() {
+        final String url = getPlaylistUrl();
         executor.execute(() -> {
             try {
-                List<Movie> movies = toMovies(M3uParser.parse(download(BuildConfig.PLAYLIST_URL)));
+                List<Movie> movies = toMovies(M3uParser.parse(download(url)));
                 Set<String> genres = new LinkedHashSet<>();
                 genres.add("Semua");
                 for (Movie movie : movies) genres.add(movie.getGenre());
-                mainHandler.post(() -> publish(movies, new ArrayList<>(genres)));
+                mainHandler.post(() -> {
+                    // Ignore a slow result if the link changed in the meantime.
+                    if (url.equals(getPlaylistUrl())) publish(movies, new ArrayList<>(genres));
+                });
             } catch (Exception e) {
                 Log.e(TAG, "Playlist could not be loaded", e);
                 mainHandler.post(this::notifyListeners);

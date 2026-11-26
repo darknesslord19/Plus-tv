@@ -358,10 +358,48 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			}
 		});
 		
+		findViewById(R.id.btn_playlist_link).setOnClickListener(v -> showPlaylistDialog());
+		
 		btnRetryFirebase.setOnClickListener(v -> {
 			Toast.makeText(this, "Memuat ulang playlist M3U...", Toast.LENGTH_SHORT).show();
 			realtimeManager.reload();
 		});
+	}
+	
+	private void showPlaylistDialog() {
+		EditText input = new EditText(this);
+		input.setSingleLine(true);
+		input.setHint("https://.../liste.m3u");
+		input.setInputType(android.text.InputType.TYPE_CLASS_TEXT | android.text.InputType.TYPE_TEXT_VARIATION_URI);
+		input.setText(realtimeManager.getPlaylistUrl());
+		input.selectAll();
+		
+		AlertDialog dialog = new AlertDialog.Builder(this)
+		.setTitle("M3U linki")
+		.setView(input)
+		.setPositiveButton("Kaydet", null)
+		.setNeutralButton("Varsayılan", (d, which) -> applyPlaylistUrl(null))
+		.setNegativeButton("İptal", null)
+		.create();
+		dialog.show();
+		// Keep the dialog open while the link is invalid.
+		dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+			String url = input.getText().toString().trim();
+			String lower = url.toLowerCase(java.util.Locale.ROOT);
+			if (!lower.startsWith("https://") && !lower.startsWith("http://")) {
+				input.setError("Link http:// veya https:// ile başlamalı");
+				return;
+			}
+			dialog.dismiss();
+			applyPlaylistUrl(url);
+		});
+	}
+	
+	private void applyPlaylistUrl(String url) {
+		selectedGenre = "Semua";
+		currentGenresList = new ArrayList<>();
+		Toast.makeText(this, "Liste yükleniyor...", Toast.LENGTH_SHORT).show();
+		realtimeManager.setPlaylistUrl(url);
 	}
 	
 	private void setupSearch() {

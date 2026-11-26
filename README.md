@@ -12,6 +12,8 @@ Bu proje Sketchware yedeğinden Gradle projesine dönüştürüldü.
 3. İşlem bitince **Artifacts > SukaFilm-apk** dosyasını indirin.
 
 ## M3U playlist
+Uygulamada üstteki **+ M3U** düğmesiyle kendi liste linkinizi ekleyebilirsiniz (**Varsayılan** ile geri dönülür). Oynatıcıda **⛶** tam ekran açar.
+
 Uygulama listeyi `playlist.m3u` dosyasından (GitHub raw bağlantısı) okur. Dosyayı düzenlemek yeterli; yeni APK gerekmez. Uygulamayı kapatıp açın. GitHub önbelleği yüzünden değişiklik birkaç dakika gecikebilir.
 
 ```

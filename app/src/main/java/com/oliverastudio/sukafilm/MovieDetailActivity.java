@@ -27,6 +27,7 @@ import android.os.Looper;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
@@ -73,6 +74,10 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private FrameLayout layoutVideoContainer;
     private VideoView videoViewTrailer;
+    private View btnVideoFullscreen;
+    private boolean isFullscreen = false;
+    private int inlineVideoHeight;
+    private int inlineBottomPadding;
     private ProgressBar progVideoBuffering;
     private TextView btnCloseVideo;
 
@@ -211,6 +216,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         populateMovieDetails();
         setupSeasonsAndEpisodes();
         setupVideoPlayer();
+        setupFullscreen();
         setupClickListeners();
         setupSimilarMovies();
     }
@@ -638,6 +644,105 @@ public class MovieDetailActivity extends AppCompatActivity {
         );
     }
 
+    private void setupFullscreen() {
+        btnVideoFullscreen = findViewById(R.id.btn_video_fullscreen);
+        btnVideoFullscreen.setOnClickListener(v -> setFullscreen(!isFullscreen));
+        // Taps on the black bars around the video also toggle the controls.
+        findViewById(R.id.layout_video_player_container).setOnClickListener(v -> {
+            if (controlsVisible) hideVideoControls();
+            else showVideoControls();
+        });
+        // Keep the player as tall as the screen, including after rotation.
+        findViewById(R.id.vscroll2).addOnLayoutChangeListener(
+                (v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+                    View frame = findViewById(R.id.frame_layout68);
+                    int height = bottom - top;
+                    if (isFullscreen && frame.getLayoutParams().height != height) {
+                        v.post(() -> {
+                            if (!isFullscreen) return;
+                            frame.getLayoutParams().height = height;
+                            frame.requestLayout();
+                            v.scrollTo(0, 0);
+                        });
+                    }
+                });
+    }
+
+    /** Enlarges the player in place; moving the VideoView would restart the video. */
+    private void setFullscreen(boolean enable) {
+        if (enable == isFullscreen) return;
+
+        ViewGroup root = (ViewGroup) ((ViewGroup) findViewById(android.R.id.content)).getChildAt(0);
+        ViewGroup page = findViewById(R.id.linear67);
+        View frame = findViewById(R.id.frame_layout68);
+        if (enable) {
+            inlineVideoHeight = frame.getLayoutParams().height;
+            inlineBottomPadding = page.getPaddingBottom();
+        }
+        isFullscreen = enable;
+
+        // Hide or restore everything except the player, keeping original visibility.
+        for (ViewGroup group : new ViewGroup[]{page, root}) {
+            for (int i = 0; i < group.getChildCount(); i++) {
+                View child = group.getChildAt(i);
+                if (child == frame || child.getId() == R.id.vscroll2) continue;
+                if (enable) {
+                    child.setTag(child.getVisibility());
+                    child.setVisibility(View.GONE);
+                } else if (child.getTag() instanceof Integer) {
+                    child.setVisibility((Integer) child.getTag());
+                    child.setTag(null);
+                }
+            }
+        }
+
+        page.setPadding(page.getPaddingLeft(), page.getPaddingTop(), page.getPaddingRight(),
+                enable ? 0 : inlineBottomPadding);
+        root.setFitsSystemWindows(!enable);
+        if (enable) root.setPadding(0, 0, 0, 0);
+
+        View scroll = findViewById(R.id.vscroll2);
+        scroll.scrollTo(0, 0);
+        frame.getLayoutParams().height = enable ? scroll.getHeight() : inlineVideoHeight;
+        frame.requestLayout();
+
+        setRequestedOrientation(enable
+                ? android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+                : android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        applySystemBars();
+        root.requestApplyInsets();
+    }
+
+    private void applySystemBars() {
+        int flags = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+        if (isFullscreen) {
+            flags |= View.SYSTEM_UI_FLAG_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+        getWindow().getDecorView().setSystemUiVisibility(flags);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && isFullscreen) applySystemBars();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (isFullscreen) {
+            setFullscreen(false);
+            return;
+        }
+        super.onBackPressed();
+    }
+
     private void playMovieStreamUrl(String url) {
         if (url == null || url.trim().isEmpty()) {
             Toast.makeText(
@@ -695,6 +800,8 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void stopAndHideVideo() {
+        setFullscreen(false);
+
         controlsHandler.removeCallbacks(
                 hideControlsRunnable
         );
@@ -753,11 +860,19 @@ public class MovieDetailActivity extends AppCompatActivity {
             btnCloseVideo.setVisibility(View.VISIBLE);
         }
 
+        if (btnVideoFullscreen != null) {
+            btnVideoFullscreen.setVisibility(View.VISIBLE);
+        }
+
         scheduleHideControls();
     }
 
     private void hideVideoControls() {
         controlsVisible = false;
+
+        if (btnVideoFullscreen != null) {
+            btnVideoFullscreen.setVisibility(View.GONE);
+        }
 
         if (layoutCustomVideoControls != null) {
             layoutCustomVideoControls.setVisibility(View.GONE);

@@ -38,7 +38,6 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -73,7 +72,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private LinearLayout btnPlayTrailerHero;
 
     private FrameLayout layoutVideoContainer;
-    private VideoView videoViewTrailer;
+    private ExoVideoView videoViewTrailer;
     private View btnVideoFullscreen;
     private boolean isFullscreen = false;
     private int inlineVideoHeight;
@@ -454,8 +453,6 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void setupVideoPlayer() {
-        videoViewTrailer.setMediaController(null);
-
         videoViewTrailer.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_UP) {
                 if (controlsVisible) {
@@ -584,20 +581,8 @@ public class MovieDetailActivity extends AppCompatActivity {
             videoHandler.post(videoProgressRunnable);
         });
 
-        videoViewTrailer.setOnInfoListener((mp, what, extra) -> {
-            if (what
-                    == android.media.MediaPlayer.MEDIA_INFO_BUFFERING_START) {
-
-                progVideoBuffering.setVisibility(View.VISIBLE);
-
-            } else if (what
-                    == android.media.MediaPlayer.MEDIA_INFO_BUFFERING_END) {
-
-                progVideoBuffering.setVisibility(View.GONE);
-            }
-
-            return false;
-        });
+        videoViewTrailer.setOnBufferingListener(buffering ->
+                progVideoBuffering.setVisibility(buffering ? View.VISIBLE : View.GONE));
 
         videoViewTrailer.setOnCompletionListener(mp -> {
             controlsHandler.removeCallbacks(
@@ -616,7 +601,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             showVideoControls();
         });
 
-        videoViewTrailer.setOnErrorListener((mp, what, extra) -> {
+        videoViewTrailer.setOnErrorListener(errorName -> {
             isVideoPrepared = false;
 
             progVideoBuffering.setVisibility(View.GONE);
@@ -632,11 +617,9 @@ public class MovieDetailActivity extends AppCompatActivity {
             Toast.makeText(
                     MovieDetailActivity.this,
                     "Video oynatılamıyor. "
-                            + "Linki veya biçimi kontrol edin.",
-                    Toast.LENGTH_SHORT
+                            + "Linki veya biçimi kontrol edin. (" + errorName + ")",
+                    Toast.LENGTH_LONG
             ).show();
-
-            return true;
         });
 
         btnCloseVideo.setOnClickListener(
@@ -678,7 +661,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                 });
     }
 
-    /** Enlarges the player in place; moving the VideoView would restart the video. */
+    /** Enlarges the player in place; moving the video surface could restart the video. */
     private void setFullscreen(boolean enable) {
         if (enable == isFullscreen) return;
 

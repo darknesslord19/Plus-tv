@@ -56,7 +56,7 @@
                     android:layout_height="match_parent"
                     android:background="#FF000000"
                     android:visibility="gone">
-                    <VideoView
+                    <com.oliverastudio.sukafilm.ExoVideoView
                         android:id="@+id/videoview_trailer"
                     android:layout_gravity="center"
                         android:layout_width="match_parent"

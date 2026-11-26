@@ -525,6 +525,16 @@
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:nestedScrollingEnabled="false" />
+                    <Button
+                        android:id="@+id/btn_load_more"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="12dp"
+                        android:background="@drawable/bg_btn_gold"
+                        android:text="Daha fazla göster"
+                        android:textAllCaps="false"
+                        android:textColor="#FF0B0E14"
+                        android:visibility="gone" />
                     <LinearLayout
                         android:id="@+id/layout_empty_search"
                         android:layout_width="match_parent"

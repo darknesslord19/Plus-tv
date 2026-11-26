@@ -1118,9 +1118,16 @@ public class MovieDetailActivity extends AppCompatActivity {
     }
 
     private void setupSimilarMovies() {
-        List<Movie> similarList =
-                PlaylistManager.getInstance()
-                        .getCurrentMovies();
+        // Up to 20 other videos from the same category.
+        List<Movie> similarList = new java.util.ArrayList<>();
+        for (Movie movie : PlaylistManager.getInstance().getCurrentMovies()) {
+            if (movie.getId() != currentMovie.getId()
+                    && movie.getGenre() != null
+                    && movie.getGenre().equalsIgnoreCase(currentMovie.getGenre())) {
+                similarList.add(movie);
+                if (similarList.size() == 20) break;
+            }
+        }
 
         recyclerSimilar.setLayoutManager(
                 new LinearLayoutManager(

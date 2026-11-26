@@ -153,6 +153,10 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 	private TrendingCardAdapter trendingAdapter;
 	private MovieCardAdapter topRatedAdapter;
 	private MovieCardAdapter popularAdapter;
+	// The home grid sits in a ScrollView, which builds every card it is given, so show it in pages.
+	private static final int PAGE_SIZE = 40;
+	private List<Movie> popularAll = new ArrayList<>();
+	private int popularLimit = PAGE_SIZE;
 	private MovieCardAdapter exploreAdapter;
 	private MovieCardAdapter favoritesAdapter;
 	private DownloadAdapter tabDownloadAdapter;
@@ -351,6 +355,10 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		recyclerPopular.setLayoutManager(new GridLayoutManager(this, 2));
 		popularAdapter = new MovieCardAdapter(this, new ArrayList<>(), true, this::openMovieDetail);
 		recyclerPopular.setAdapter(popularAdapter);
+		findViewById(R.id.btn_load_more).setOnClickListener(v -> {
+			popularLimit += PAGE_SIZE;
+			renderPopular();
+		});
 		
 		cardSpotlight.setOnClickListener(v -> {
 			if (currentSpotlightMovie != null) {
@@ -433,6 +441,18 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 		});
 	}
 	
+	private void showPopular(List<Movie> movies) {
+		popularAll = movies;
+		popularLimit = PAGE_SIZE;
+		renderPopular();
+	}
+	
+	private void renderPopular() {
+		int shown = Math.min(popularLimit, popularAll.size());
+		popularAdapter.updateList(new ArrayList<>(popularAll.subList(0, shown)));
+		findViewById(R.id.btn_load_more).setVisibility(shown < popularAll.size() ? View.VISIBLE : View.GONE);
+	}
+	
 	private void performHomeSearch(String query) {
 		List<Movie> all = realtimeManager.getCurrentMovies();
 		List<Movie> results = new ArrayList<>();
@@ -453,7 +473,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			}
 		}
 		
-		popularAdapter.updateList(results);
+		showPopular(results);
 		txtMovieCount.setText(results.size() + " Film");
 		
 		if (results.isEmpty()) {
@@ -480,7 +500,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			}
 		}
 		
-		popularAdapter.updateList(filtered);
+		showPopular(filtered);
 		txtMovieCount.setText(filtered.size() + " Film");
 		layoutEmptySearch.setVisibility(filtered.isEmpty() && !all.isEmpty() ? View.VISIBLE : View.GONE);
 		recyclerPopular.setVisibility(filtered.isEmpty() ? View.GONE : View.VISIBLE);
@@ -1036,7 +1056,7 @@ FavoritesHistoryManager.OnUserDataChangedListener {
 			}
 		}
 		Collections.sort(list, (m1, m2) -> Double.compare(m2.getRating(), m1.getRating()));
-		return list;
+		return list.size() > 20 ? new ArrayList<>(list.subList(0, 20)) : list;
 	}
 	
 	private void setupGenreChips() {
